@@ -20,6 +20,7 @@ import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import InteractiveBackground from './InteractiveBackground';
 import TypewriterEffect from './TypewriterEffect';
+// import profileImage from '../../assets/images/sanju.jpg'; // Uncomment if you want to use the import method
 
 const Hero: React.FC = () => {
   const theme = useTheme();
@@ -28,15 +29,15 @@ const Hero: React.FC = () => {
   const roles = [
     'Full-Stack Developer',
     'React Specialist',
-    'UI/UX Enthusiast',
+    'Web Developer',
     'Problem Solver',
     'Tech Innovator',
   ];
 
   const socialLinks = [
-    { icon: <GitHub />, url: 'https://github.com', label: 'GitHub' },
-    { icon: <LinkedIn />, url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Email />, url: 'mailto:your.email@example.com', label: 'Email' },
+    { icon: <GitHub />, url: 'https://github.com/Sanjaydev009', label: 'GitHub' },
+    { icon: <LinkedIn />, url: 'https://www.linkedin.com/in/bandi-sanjay-3431ab248/', label: 'LinkedIn' },
+    { icon: <Email />, url: 'mailto:sanjay.bandi@aurora.edu.in', label: 'Email' },
   ];
 
   const scrollToNext = () => {
@@ -96,7 +97,7 @@ const Hero: React.FC = () => {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Your Name
+                Bandi Sanjay
               </Typography>
 
               <TypewriterEffect
@@ -343,8 +344,8 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <Avatar
-                    src="/images/profile.jpg" // Add your profile image
-                    alt="Profile"
+                    src="/images/sanju.jpg" 
+                    alt="Bandi Sanjay Profile"
                     sx={{
                       width: isMobile ? 250 : 350,
                       height: isMobile ? 250 : 350,
@@ -355,7 +356,7 @@ const Hero: React.FC = () => {
                     }}
                   >
                     {/* Fallback initials */}
-                    YN
+                    BS
                   </Avatar>
                 </motion.div>
               </Box>
