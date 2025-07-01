@@ -21,15 +21,15 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: <GitHub />, url: 'https://github.com', label: 'GitHub' },
-    { icon: <LinkedIn />, url: 'https://linkedin.com', label: 'LinkedIn' },
+    { icon: <GitHub />, url: 'https://github.com/Sanjaydev009', label: 'GitHub' },
+    { icon: <LinkedIn />, url: 'https://www.linkedin.com/in/bandi-sanjay-3431ab248/', label: 'LinkedIn' },
     { icon: <Twitter />, url: 'https://twitter.com', label: 'Twitter' },
   ];
 
   const contactInfo = [
-    { icon: <Email />, text: 'your.email@example.com', href: 'mailto:your.email@example.com' },
-    { icon: <Phone />, text: '+1 (555) 123-4567', href: 'tel:+15551234567' },
-    { icon: <LocationOn />, text: 'Your City, Country', href: null },
+    { icon: <Email />, text: 'sanjay.bandi@aurora.edu.in', href: 'mailto:sanjay.bandi@aurora.edu.in' },
+    { icon: <Phone />, text: '+91 9325469450', href: 'tel:+91 9325469450' },
+    { icon: <LocationOn />, text: 'Hyderabd, India', href: null },
   ];
 
   const quickLinks = [
