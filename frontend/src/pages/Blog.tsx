@@ -21,7 +21,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { BlogPost } from '../types';
 
 // Import profile image
-import profileImage from '/images/sanju.jpg';
+import profileImage from '../assets/images/sanju.jpg';
 
 // Fallback mock data for when API is not available
 const mockBlogPosts: BlogPost[] = [
