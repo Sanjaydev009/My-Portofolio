@@ -97,6 +97,7 @@ const Header: React.FC = () => {
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
+                fontSize: '1.8rem' 
               }}
             >
               Portfolio

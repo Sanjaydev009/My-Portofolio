@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 import { motion, useInView } from 'framer-motion';
 import {
-  Psychology as PsychologyIcon,
   Lightbulb as CreativeIcon,
   Group as TeamIcon,
   TrendingUp as LeadershipIcon,
@@ -44,46 +43,6 @@ const PersonalityExplorer: React.FC = () => {
 
   const personalityTraits: PersonalityTrait[] = [
     {
-      id: 'creative',
-      name: 'Creative',
-      value: 92,
-      description: 'I love finding innovative solutions and thinking outside the box.',
-      color: '#ff6b6b',
-      icon: CreativeIcon,
-    },
-    {
-      id: 'analytical',
-      name: 'Analytical',
-      value: 88,
-      description: 'I approach problems systematically and love diving deep into data.',
-      color: '#4ecdc4',
-      icon: PsychologyIcon,
-    },
-    {
-      id: 'collaborative',
-      name: 'Collaborative',
-      value: 85,
-      description: 'I thrive in team environments and believe in collective success.',
-      color: '#45b7d1',
-      icon: TeamIcon,
-    },
-    {
-      id: 'leadership',
-      name: 'Leadership',
-      value: 78,
-      description: 'I enjoy guiding teams and projects toward successful outcomes.',
-      color: '#f9ca24',
-      icon: LeadershipIcon,
-    },
-    {
-      id: 'empathetic',
-      name: 'Empathetic',
-      value: 90,
-      description: 'I connect well with others and understand diverse perspectives.',
-      color: '#f0932b',
-      icon: EmpathyIcon,
-    },
-    {
       id: 'problem-solver',
       name: 'Problem Solver',
       value: 95,
@@ -100,6 +59,22 @@ const PersonalityExplorer: React.FC = () => {
       icon: LearnerIcon,
     },
     {
+      id: 'creative',
+      name: 'Creative Thinker',
+      value: 92,
+      description: 'I love finding innovative solutions and thinking outside the box.',
+      color: '#ff6b6b',
+      icon: CreativeIcon,
+    },
+    {
+      id: 'empathetic',
+      name: 'Empathetic',
+      value: 90,
+      description: 'I connect well with others and understand diverse perspectives.',
+      color: '#f0932b',
+      icon: EmpathyIcon,
+    },
+    {
       id: 'curious',
       name: 'Curious',
       value: 89,
@@ -107,48 +82,59 @@ const PersonalityExplorer: React.FC = () => {
       color: '#a29bfe',
       icon: CuriousIcon,
     },
+    {
+      id: 'collaborative',
+      name: 'Collaborative',
+      value: 87,
+      description: 'I thrive in team environments and believe in collective success.',
+      color: '#45b7d1',
+      icon: TeamIcon,
+    },
+    {
+      id: 'leadership',
+      name: 'Leadership',
+      value: 82,
+      description: 'I enjoy guiding teams and projects toward successful outcomes.',
+      color: '#f9ca24',
+      icon: LeadershipIcon,
+    },
   ];
 
   const coreValues: CoreValue[] = [
-    {
-      name: 'Excellence',
-      description: 'Striving for the highest quality in everything I do.',
-      importance: 95,
-    },
-    {
-      name: 'Innovation',
-      description: 'Constantly seeking new and better ways to solve problems.',
-      importance: 90,
-    },
     {
       name: 'Integrity',
       description: 'Being honest, transparent, and ethical in all interactions.',
       importance: 98,
     },
     {
-      name: 'Growth',
-      description: 'Embracing challenges as opportunities to learn and improve.',
-      importance: 87,
+      name: 'Excellence',
+      description: 'Striving for the highest quality in everything I do.',
+      importance: 95,
     },
     {
       name: 'Impact',
       description: 'Creating meaningful solutions that make a positive difference.',
       importance: 92,
     },
+    {
+      name: 'Growth',
+      description: 'Embracing challenges as opportunities to learn and improve.',
+      importance: 89,
+    },
   ];
 
   const categories = [
     { id: 'all', name: 'All Traits' },
-    { id: 'technical', name: 'Technical' },
+    { id: 'cognitive', name: 'Cognitive' },
     { id: 'interpersonal', name: 'Interpersonal' },
     { id: 'leadership', name: 'Leadership' },
   ];
 
   const getFilteredTraits = () => {
     if (selectedCategory === 'all') return personalityTraits;
-    if (selectedCategory === 'technical') {
+    if (selectedCategory === 'cognitive') {
       return personalityTraits.filter(trait => 
-        ['analytical', 'problem-solver', 'learner', 'curious'].includes(trait.id)
+        ['problem-solver', 'learner', 'curious', 'creative'].includes(trait.id)
       );
     }
     if (selectedCategory === 'interpersonal') {

@@ -22,7 +22,6 @@ import {
   Public,
   TrendingUp,
   Celebration,
-  AutoAwesome,
   PlayArrow,
   Pause,
 } from '@mui/icons-material';
@@ -59,122 +58,121 @@ interface AchievementStats {
 
 const achievements: Achievement[] = [
   {
-    id: 'hackathon-winner',
-    title: 'National Hackathon Winner',
-    description: 'First place in National Coding Championship 2024 with an AI-powered inventory optimization solution.',
+    id: 'first-rank-academics',
+    title: 'First Rank in MCA Academics',
+    description: 'Achieved first rank in Master of Computer Applications (MCA) program with outstanding academic performance.',
     category: 'award',
     date: '2024-03',
     icon: EmojiEvents,
     color: '#f59e0b',
     image: '/api/placeholder/400/200',
     stats: [
-      { label: 'Teams Competed', value: 150, icon: Group },
-      { label: 'Prize Money', value: '$10,000', icon: Star },
-      { label: 'Event Duration', value: '48 hours', icon: TrendingUp }
+      { label: 'Class Rank', value: '1st', icon: Star },
+      { label: 'CGPA', value: '9.2/10', icon: TrendingUp },
+      { label: 'Program Duration', value: '3 years', icon: School }
     ],
-    impact: 'Solution helped 3 small businesses reduce inventory costs by 30% and is being developed into a commercial product.',
+    impact: 'Recognized for exceptional academic performance and consistent dedication to learning computer science concepts.',
     links: [
-      { label: 'Project Demo', url: '#demo' },
-      { label: 'News Article', url: '#news' }
+      { label: 'Academic Certificate', url: '#certificate' }
     ],
     level: 'expert',
-    tags: ['AI/ML', 'Problem Solving', 'Innovation', 'Team Leadership']
+    tags: ['Academic Excellence', 'Computer Science', 'Problem Solving', 'Dedication']
   },
   {
-    id: 'aws-certification',
-    title: 'AWS Solutions Architect Professional',
-    description: 'Achieved the highest level AWS certification, demonstrating expertise in designing distributed systems.',
+    id: 'mca-degree',
+    title: 'Master of Computer Applications (MCA)',
+    description: 'Completed MCA PG Degree with specialization in software development and modern programming technologies.',
     category: 'certification',
     date: '2024-01',
     icon: School,
     color: '#ff9900',
     stats: [
-      { label: 'Pass Rate', value: '23%', icon: TrendingUp },
-      { label: 'Study Hours', value: 200, icon: School },
-      { label: 'Practice Exams', value: 15, icon: Code }
+      { label: 'CGPA', value: '9.2/10', icon: TrendingUp },
+      { label: 'Program Duration', value: '3 years', icon: School },
+      { label: 'Specialization', value: 'Software Dev', icon: Code }
     ],
-    impact: 'Enabled design and implementation of cloud architectures serving 100,000+ users with 99.9% uptime.',
+    impact: 'Gained comprehensive knowledge in software engineering, database management, and advanced programming concepts.',
     links: [
-      { label: 'Certificate', url: '#cert' }
+      { label: 'Degree Certificate', url: '#cert' }
     ],
     level: 'expert',
-    tags: ['Cloud Architecture', 'AWS', 'System Design', 'Scalability']
+    tags: ['Post Graduate', 'Software Engineering', 'Computer Science', 'Academic Achievement']
   },
   {
-    id: 'open-source-contributor',
-    title: '1000+ Open Source Contributions',
-    description: 'Reached milestone of 1000+ contributions across various open source projects, with 500+ GitHub stars.',
-    category: 'contribution',
+    id: 'student-feedback-system',
+    title: 'Student Feedback Management System',
+    description: 'Developed a comprehensive feedback management system using MERN Stack for academic institutions.',
+    category: 'milestone',
     date: '2023-12',
     icon: Code,
     color: '#10b981',
     stats: [
-      { label: 'Contributions', value: 1247, icon: Code },
-      { label: 'Stars Earned', value: 543, icon: Star },
-      { label: 'Projects', value: 25, icon: Public }
+      { label: 'Tech Stack', value: 'MERN', icon: Code },
+      { label: 'Features', value: '15+', icon: Star },
+      { label: 'Development Time', value: '3 months', icon: Public }
     ],
-    impact: 'Code used by developers worldwide, contributing to projects with combined 50,000+ weekly downloads.',
+    impact: 'Successfully deployed system for collecting and managing student feedback with real-time analytics dashboard.',
     links: [
-      { label: 'GitHub Profile', url: '#github' },
-      { label: 'Top Projects', url: '#projects' }
+      { label: 'GitHub Repository', url: 'https://github.com/Sanjaydev009/student-feedback-system' },
+      { label: 'Live Demo', url: '#demo' }
     ],
     level: 'advanced',
-    tags: ['Open Source', 'Community', 'JavaScript', 'TypeScript', 'React']
+    tags: ['MERN Stack', 'MongoDB', 'Express.js', 'React', 'Node.js', 'Full Stack']
   },
   {
-    id: 'team-leadership',
-    title: 'Led 10-Person Development Team',
-    description: 'Successfully managed and mentored a diverse team of developers on a critical enterprise project.',
+    id: 'heydu-services-internship',
+    title: '6 Months Full Stack Internship at Heydu Services Pvt Ltd',
+    description: 'Completed 6-month full stack development internship working on real-world projects and gaining industry experience.',
     category: 'leadership',
-    date: '2023-08',
-    icon: Group,
+    date: '2025-02',
+    icon: Work,
     color: '#8b5cf6',
     stats: [
-      { label: 'Team Size', value: 10, icon: Group },
-      { label: 'Project Duration', value: '6 months', icon: Work },
-      { label: 'On-time Delivery', value: '100%', icon: Celebration }
+      { label: 'Duration', value: '6 months', icon: Work },
+      { label: 'Technologies', value: 'MERN Stack', icon: Code },
+      { label: 'Project Completed', value: '1', icon: Celebration }
     ],
-    impact: 'Delivered project 2 weeks ahead of schedule, team satisfaction increased by 40%, 3 team members promoted.',
+    impact: 'Gained hands-on experience in full stack development, worked with senior developers, and contributed to live projects.',
     level: 'advanced',
-    tags: ['Leadership', 'Project Management', 'Mentoring', 'Agile']
+    tags: ['Full Stack Development', 'MERN Stack', 'Industry Experience', 'Real-world Projects']
   },
   {
-    id: 'performance-optimization',
-    title: 'Achieved 400% Performance Improvement',
-    description: 'Optimized critical application performance, reducing load times from 8s to 2s.',
+    id: 'eduversity-internship',
+    title: '3 Months Internship at Edu-versity',
+    description: 'Completed 3-month development internship gaining experience in web technologies and software development practices.',
     category: 'milestone',
-    date: '2023-06',
+    date: '2024-06',
     icon: TrendingUp,
     color: '#06b6d4',
     stats: [
-      { label: 'Load Time Reduction', value: '75%', icon: TrendingUp },
-      { label: 'User Satisfaction', value: '+85%', icon: Favorite },
-      { label: 'Server Costs', value: '-40%', icon: AutoAwesome }
+      { label: 'Duration', value: '3 months', icon: TrendingUp },
+      { label: 'Technologies Learned', value: 'Web Dev', icon: Code },
+      { label: 'Performance Rating', value: 'Excellent', icon: Favorite }
     ],
-    impact: 'Improved user experience for 50,000+ daily users, reduced server costs by $2,000/month.',
-    level: 'advanced',
-    tags: ['Performance', 'Optimization', 'User Experience', 'Cost Reduction']
+    impact: 'Gained foundational industry experience and learned professional development practices and teamwork.',
+    level: 'intermediate',
+    tags: ['Internship', 'Web Development', 'Learning', 'Professional Growth']
   },
   {
-    id: 'conference-speaker',
-    title: 'Tech Conference Keynote Speaker',
-    description: 'Delivered keynote on "Future of Web Development" at Regional Tech Conference 2023.',
+    id: 'portfolio-website',
+    title: 'Advanced Portfolio Website Development',
+    description: 'Built a comprehensive portfolio website showcasing skills, projects, and achievements using modern web technologies.',
     category: 'contribution',
-    date: '2023-04',
+    date: '2025-04',
     icon: Public,
     color: '#ec4899',
     stats: [
-      { label: 'Audience Size', value: 500, icon: Group },
-      { label: 'Talk Duration', value: '45 min', icon: Public },
-      { label: 'Satisfaction Score', value: '4.8/5', icon: Star }
+      { label: 'Technologies', value: 'React+TS', icon: Code },
+      { label: 'Components', value: '20+', icon: Group },
+      { label: 'Performance Score', value: '95/100', icon: Star }
     ],
-    impact: 'Inspired 100+ developers to adopt modern web technologies, talk viewed 10,000+ times online.',
+    impact: 'Created professional online presence showcasing technical skills and project experience to potential employers.',
     links: [
-      { label: 'Video Recording', url: '#video' },
-      { label: 'Slides', url: '#slides' }
+      { label: 'Live Website', url: '#website' },
+      { label: 'Source Code', url: 'https://github.com/Sanjaydev009/My-Portofolio' }
     ],
-    level: 'expert',
-    tags: ['Public Speaking', 'Thought Leadership', 'Web Development', 'Innovation']
+    level: 'advanced',
+    tags: ['React', 'TypeScript', 'Portfolio', 'Web Development', 'Responsive Design']
   }
 ];
 

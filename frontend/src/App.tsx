@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, CircularProgress, Box } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -17,8 +17,10 @@ import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Projects from './pages/Projects';
-import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+
+// Lazy load Blog page for better performance
+const Blog = React.lazy(() => import('./pages/Blog'));
 
 // Create a query client
 const queryClient = new QueryClient({
@@ -44,7 +46,15 @@ const App: React.FC = () => {
                   <Route index element={<Home />} />
                   <Route path="about" element={<About />} />
                   <Route path="projects" element={<Projects />} />
-                  <Route path="blog" element={<Blog />} />
+                  <Route path="blog" element={
+                    <Suspense fallback={
+                      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+                        <CircularProgress />
+                      </Box>
+                    }>
+                      <Blog />
+                    </Suspense>
+                  } />
                   <Route path="contact" element={<Contact />} />
                 </Route>
               </Routes>

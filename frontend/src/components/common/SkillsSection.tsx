@@ -14,18 +14,23 @@ const skills = [
   {
     category: 'Frontend',
     technologies: [
+      { name: 'HTML5', level: 95 },
+      { name: 'CSS3', level: 95 },
+      { name: 'JavaScript', level: 92 },
       { name: 'React/TypeScript', level: 95 },
       { name: 'Next.js', level: 90 },
-      { name: 'Material-UI', level: 85 },
+      { name: 'Angular', level: 75 },
       { name: 'Tailwind CSS', level: 88 },
+      { name: 'Bootstrap', level: 85 },
+      { name: 'Material-UI', level: 85 },
     ],
   },
   {
     category: 'Backend',
     technologies: [
       { name: 'Node.js/Express', level: 90 },
-      { name: 'Python/Django', level: 85 },
-      { name: 'GraphQL', level: 75 },
+      { name: 'Python', level: 85 },
+      { name: 'Java', level: 60 },
       { name: 'RESTful APIs', level: 92 },
     ],
   },
@@ -33,18 +38,27 @@ const skills = [
     category: 'Database',
     technologies: [
       { name: 'MongoDB', level: 88 },
-      { name: 'PostgreSQL', level: 85 },
+      { name: 'MySQL', level: 85 },
       { name: 'Redis', level: 75 },
       { name: 'Firebase', level: 80 },
     ],
   },
   {
-    category: 'DevOps & Tools',
+    category: 'AI/ML',
     technologies: [
-      { name: 'Docker', level: 80 },
-      { name: 'AWS', level: 75 },
+      { name: 'Machine Learning', level: 78 },
+      { name: 'TensorFlow', level: 70 },
+      { name: 'PyTorch', level: 65 },
+      { name: 'Transformers', level: 72 },
+    ],
+  },
+  {
+    category: 'Tools & Others',
+    technologies: [
       { name: 'Git/GitHub', level: 95 },
-      { name: 'CI/CD', level: 78 },
+      { name: 'VS Code', level: 95 },
+      { name: 'Android Studio', level: 75 },
+      { name: 'Figma', level: 80 },
     ],
   },
 ];

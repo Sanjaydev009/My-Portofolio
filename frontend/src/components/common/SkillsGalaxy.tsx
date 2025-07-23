@@ -51,16 +51,10 @@ const skills: Skill[] = [
   { id: 'nodejs', name: 'Node.js', level: 88, category: 'Backend', x: -120, y: -60, z: 10, color: '#339933', connections: ['typescript', 'mongodb', 'express'], description: 'Server-side JavaScript runtime', projects: ['REST APIs', 'Microservices', 'Real-time apps'] },
   { id: 'express', name: 'Express.js', level: 85, category: 'Backend', x: -150, y: 20, z: -20, color: '#404040', connections: ['nodejs', 'mongodb', 'jwt'], description: 'Minimal and flexible Node.js web framework', projects: ['API servers', 'Authentication systems', 'Middleware'] },
   { id: 'mongodb', name: 'MongoDB', level: 80, category: 'Backend', x: -200, y: -20, z: 30, color: '#47a248', connections: ['nodejs', 'express', 'mongoose'], description: 'NoSQL database for modern applications', projects: ['User management', 'Content systems', 'Analytics'] },
-  { id: 'graphql', name: 'GraphQL', level: 75, category: 'Backend', x: -100, y: -120, z: -10, color: '#e10098', connections: ['nodejs', 'react', 'apollo'], description: 'Query language for APIs', projects: ['Data aggregation', 'Client-server communication'] },
   
   // DevOps & Tools
   { id: 'docker', name: 'Docker', level: 82, category: 'DevOps', x: 150, y: -80, z: -40, color: '#2496ed', connections: ['kubernetes', 'cicd', 'aws'], description: 'Containerization for consistent deployments', projects: ['Development environments', 'Production deployments'] },
-  { id: 'aws', name: 'AWS', level: 78, category: 'DevOps', x: 200, y: 40, z: 20, color: '#ff9900', connections: ['docker', 'kubernetes', 'terraform'], description: 'Cloud computing services', projects: ['Scalable infrastructure', 'Serverless functions'] },
   { id: 'git', name: 'Git', level: 95, category: 'DevOps', x: 80, y: -120, z: 60, color: '#f05032', connections: ['github', 'cicd'], description: 'Version control and collaboration', projects: ['All projects', 'Open source contributions'] },
-  
-  // Design & UX
-  { id: 'figma', name: 'Figma', level: 75, category: 'Design', x: -60, y: 120, z: -50, color: '#f24e1e', connections: ['ux', 'prototyping'], description: 'UI/UX design and prototyping', projects: ['Design systems', 'User interfaces', 'Prototypes'] },
-  { id: 'ux', name: 'UX Design', level: 70, category: 'Design', x: 40, y: 150, z: 10, color: '#ff6b6b', connections: ['figma', 'user-research'], description: 'User experience design principles', projects: ['User flows', 'Wireframes', 'User testing'] },
   
   // AI & Data
   { id: 'python', name: 'Python', level: 80, category: 'AI/ML', x: -180, y: 80, z: 50, color: '#3776ab', connections: ['tensorflow', 'data-analysis'], description: 'Programming for AI and data science', projects: ['Machine learning models', 'Data analysis', 'Automation'] },
@@ -80,11 +74,11 @@ const SkillsGalaxy: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
+  const rotationRef = useRef({ x: 0, y: 0 });
   const [isAnimating, setIsAnimating] = useState(true);
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [hoveredSkill, setHoveredSkill] = useState<Skill | null>(null);
   const [zoom, setZoom] = useState(1);
-  const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [categories, setCategories] = useState(skillCategories);
   const [showFilters, setShowFilters] = useState(false);
   const isDragging = useRef(false);
@@ -144,8 +138,8 @@ const SkillsGalaxy: React.FC = () => {
       visibleSkills
         .sort((a, b) => {
           // Sort by z-depth for proper layering
-          const aZ = a.z * Math.cos(rotation.x) - a.y * Math.sin(rotation.x);
-          const bZ = b.z * Math.cos(rotation.x) - b.y * Math.sin(rotation.x);
+          const aZ = a.z * Math.cos(rotationRef.current.x) - a.y * Math.sin(rotationRef.current.x);
+          const bZ = b.z * Math.cos(rotationRef.current.x) - b.y * Math.sin(rotationRef.current.x);
           return bZ - aZ;
         })
         .forEach(skill => {
@@ -190,10 +184,10 @@ const SkillsGalaxy: React.FC = () => {
 
     const project3D = (skill: Skill, centerX: number, centerY: number) => {
       // Apply rotation
-      const cosX = Math.cos(rotation.x);
-      const sinX = Math.sin(rotation.x);
-      const cosY = Math.cos(rotation.y);
-      const sinY = Math.sin(rotation.y);
+      const cosX = Math.cos(rotationRef.current.x);
+      const sinX = Math.sin(rotationRef.current.x);
+      const cosY = Math.cos(rotationRef.current.y);
+      const sinY = Math.sin(rotationRef.current.y);
       
       // Rotate around X axis
       const y1 = skill.y * cosX - skill.z * sinX;
@@ -216,10 +210,10 @@ const SkillsGalaxy: React.FC = () => {
 
     const animate = () => {
       if (isAnimating) {
-        setRotation(prev => ({
-          x: prev.x + 0.005,
-          y: prev.y + 0.003,
-        }));
+        rotationRef.current = {
+          x: rotationRef.current.x + 0.005,
+          y: rotationRef.current.y + 0.003,
+        };
       }
       draw();
       animationRef.current = requestAnimationFrame(animate);
@@ -236,7 +230,7 @@ const SkillsGalaxy: React.FC = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [isAnimating, rotation, zoom, categories, selectedSkill, hoveredSkill, theme]);
+  }, [isAnimating, zoom, categories, selectedSkill, hoveredSkill, theme]);
 
   const handleCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvas = canvasRef.current;
@@ -270,10 +264,10 @@ const SkillsGalaxy: React.FC = () => {
       const deltaX = x - lastMousePos.current.x;
       const deltaY = y - lastMousePos.current.y;
       
-      setRotation(prev => ({
-        x: prev.x + deltaY * 0.01,
-        y: prev.y + deltaX * 0.01,
-      }));
+      rotationRef.current = {
+        x: rotationRef.current.x + deltaY * 0.01,
+        y: rotationRef.current.y + deltaX * 0.01,
+      };
       
       lastMousePos.current = { x, y };
       return;
@@ -318,7 +312,7 @@ const SkillsGalaxy: React.FC = () => {
   };
 
   const resetView = () => {
-    setRotation({ x: 0, y: 0 });
+    rotationRef.current = { x: 0, y: 0 };
     setZoom(1);
     setSelectedSkill(null);
     setHoveredSkill(null);

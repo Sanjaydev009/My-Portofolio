@@ -47,6 +47,40 @@ const Hero: React.FC = () => {
     });
   };
 
+  const handleDownloadResume = () => {
+    try {
+      // Create a link element
+      const link = document.createElement('a');
+      
+      // Set the path to your resume file (place your resume in public/documents/ folder)
+      link.href = '/documents/Sanju_Resume.pdf';
+      
+      // Set the download attribute with the desired filename
+      link.download = 'Sanju_Resume.pdf';
+      
+      // Set the link target to _blank to open in new tab if download fails
+      link.target = '_blank';
+      
+      // Append link to body
+      document.body.appendChild(link);
+      
+      // Trigger click
+      link.click();
+      
+      // Remove link from body
+      document.body.removeChild(link);
+      
+      // Optional: Track download event for analytics
+      console.log('Resume download initiated');
+      
+    } catch (error) {
+      console.error('Error downloading resume:', error);
+      
+      // Fallback: Open resume in new tab if download fails
+      window.open('/documents/Sanju_Resume.pdf', '_blank');
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -168,10 +202,7 @@ const Hero: React.FC = () => {
                         borderWidth: 2,
                       },
                     }}
-                    onClick={() => {
-                      // Add your resume download logic here
-                      console.log('Download resume');
-                    }}
+                    onClick={handleDownloadResume}
                   >
                     Download CV
                   </Button>

@@ -7,25 +7,17 @@ import {
   Card,
   CardContent,
   TextField,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
   Chip,
-  Avatar,
   IconButton,
-  useTheme,
   alpha,
 } from '@mui/material';
 import {
   Email,
   Phone,
-  LocationOn,
   Send,
   LinkedIn,
   GitHub,
   Twitter,
-  Schedule,
   VideoCall,
   Coffee,
   Lightbulb,
@@ -36,6 +28,7 @@ import {
   CheckCircle,
 } from '@mui/icons-material';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
+import emailjs from 'emailjs-com';
 
 interface ContactMethod {
   id: string;
@@ -59,34 +52,34 @@ interface ContactReason {
 
 const contactMethods: ContactMethod[] = [
   {
-    id: 'email',
-    icon: Email,
-    title: 'Email',
-    description: 'For detailed discussions and project inquiries',
-    value: 'hello@yourname.com',
-    action: 'mailto:hello@yourname.com',
-    color: '#3b82f6',
-    availability: 'Always available',
-    responseTime: 'Within 24 hours',
-  },
-  {
-    id: 'phone',
-    icon: Phone,
-    title: 'Phone',
-    description: 'For urgent matters and direct conversations',
-    value: '+1 (555) 123-4567',
-    action: 'tel:+15551234567',
-    color: '#10b981',
-    availability: 'Mon-Fri, 9 AM - 6 PM PST',
-    responseTime: 'Immediate',
-  },
+      id: 'email',
+      icon: Email,
+      title: 'Email',
+      description: 'For detailed discussions and project inquiries',
+      value: 'sanjaybandi009@gmail.com',
+      action: 'mailto:sanjaybandi009@gmail.com',
+      color: '#3b82f6',
+      availability: 'Always available',
+      responseTime: 'Within 24 hours',
+    },
+    {
+      id: 'phone',
+      icon: Phone,
+      title: 'Phone',
+      description: 'For urgent matters and direct conversations',
+      value: '+91 9325469450',
+      action: 'tel:+919325469450',
+      color: '#10b981',
+      availability: 'Mon-Fri, 9 AM - 6 PM IST',
+      responseTime: 'Immediate',
+    },
   {
     id: 'video',
     icon: VideoCall,
     title: 'Video Call',
     description: 'Schedule a meeting to discuss your project',
     value: 'Book a 30-min call',
-    action: 'https://calendly.com/yourname',
+    action: 'https://calendly.com/sanjaybandi',
     color: '#8b5cf6',
     availability: 'Mon-Fri, flexible hours',
     responseTime: 'Same day confirmation',
@@ -96,7 +89,7 @@ const contactMethods: ContactMethod[] = [
     icon: Coffee,
     title: 'Coffee Chat',
     description: 'Let\'s meet in person if you\'re in the area',
-    value: 'San Francisco Bay Area',
+    value: 'Mumbai, India',
     action: null,
     color: '#f59e0b',
     availability: 'Weekends preferred',
@@ -108,19 +101,19 @@ const socialLinks = [
   {
     icon: LinkedIn,
     label: 'LinkedIn',
-    url: 'https://linkedin.com/in/yourname',
+    url: 'https://www.linkedin.com/in/bandi-sanjay-3431ab248/',
     color: '#0077b5',
   },
   {
     icon: GitHub,
     label: 'GitHub',
-    url: 'https://github.com/yourname',
+    url: 'https://github.com/Sanjaydev009',
     color: '#333333',
   },
   {
     icon: Twitter,
     label: 'Twitter',
-    url: 'https://twitter.com/yourname',
+    url: 'https://twitter.com/SanjayBandi009',
     color: '#1da1f2',
   },
 ];
@@ -164,7 +157,6 @@ const contactReasons: ContactReason[] = [
 ];
 
 const ContactSection: React.FC = () => {
-  const theme = useTheme();
   const [selectedReason, setSelectedReason] = useState<string>('');
   const [selectedMethod, setSelectedMethod] = useState<string>('');
   const [formData, setFormData] = useState({
@@ -174,14 +166,97 @@ const ContactSection: React.FC = () => {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    
+    if (isSending) return; // Prevent multiple submissions
+    
+    // Check internet connectivity
+    if (!navigator.onLine) {
+      alert('No internet connection. Please check your network and try again.');
+      return;
+    }
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
+    setIsSending(true);
+    
+    try {
+      // Initialize EmailJS with your User ID
+      emailjs.init("h3kC19B1uve366yko");
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,
+        company: formData.company || 'Not provided',
+        message: formData.message,
+        subject: selectedReason ? contactReasons.find(r => r.id === selectedReason)?.label : 'General Inquiry',
+        to_name: 'Sanjay Bandi',
+        to_email: 'sanjaybandi009@gmail.com'
+      };
+
+      console.log('Sending email with params:', templateParams);
+      console.log('Service ID:', 'service_lns5hff');
+      console.log('Template ID:', 'template_i0c2orp');
+      
+      // EmailJS service details - make sure these match your actual EmailJS setup
+      const result = await emailjs.send(
+        'service_lns5hff',   // Make sure this matches your EmailJS Service ID
+        'template_i0c2orp',  // Make sure this matches your EmailJS Template ID
+        templateParams,
+        'h3kC19B1uve366yko'  // Your EmailJS Public Key (User ID)
+      );
+      
+      console.log('Email sent successfully!', result);
+      setIsSending(false);
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+      setSelectedReason('');
+      setTimeout(() => setIsSubmitted(false), 5000);
+      
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setIsSending(false);
+      
+      // More detailed error handling
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        
+        // Check for specific EmailJS errors
+        if (error.message.includes('403')) {
+          alert('Email service authentication failed. Please contact the site administrator.');
+        } else if (error.message.includes('400')) {
+          alert('Invalid email parameters. Please check your input and try again.');
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          alert('Network error. Please check your internet connection and try again.');
+        } else {
+          alert(`Failed to send your message: ${error.message}. Please try again or contact directly via email: sanjaybandi009@gmail.com`);
+        }
+      } else {
+        alert('Failed to send your message. Please check your internet connection and try again or contact directly via email: sanjaybandi009@gmail.com');
+      }
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -551,7 +626,8 @@ const ContactSection: React.FC = () => {
                       variant="contained"
                       size="large"
                       fullWidth
-                      startIcon={<Send />}
+                      disabled={isSending}
+                      startIcon={isSending ? null : <Send />}
                       sx={{
                         backgroundColor: 'background.paper',
                         color: 'primary.main',
@@ -564,9 +640,10 @@ const ContactSection: React.FC = () => {
                           transform: 'translateY(-2px)',
                         },
                         transition: 'all 0.3s ease',
+                        opacity: isSending ? 0.7 : 1,
                       }}
                     >
-                      Send Message
+                      {isSending ? 'Sending...' : 'Send Message'}
                     </Button>
                   </Box>
                 )}
