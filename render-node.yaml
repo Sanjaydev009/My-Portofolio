@@ -1,0 +1,8 @@
+services:
+  # Alternative: Node.js server approach for guaranteed SPA routing
+  - type: web
+    name: sanjay-portfolio-node
+    env: node
+    buildCommand: cd frontend && npm ci --legacy-peer-deps && npm run build
+    startCommand: node server.js
+    healthCheckPath: /

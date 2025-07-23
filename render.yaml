@@ -5,7 +5,64 @@ services:
     buildCommand: cd frontend && npm ci --legacy-peer-deps && npm run build
     staticPublishPath: frontend/dist
     routes:
-      # SPA routing - catch all non-asset routes and serve index.html
+      # Static assets - serve directly (must be first)
+      - type: rewrite
+        source: /assets/*
+        destination: /assets/:splat
+      - type: rewrite
+        source: /favicon.ico
+        destination: /favicon.ico
+      - type: rewrite
+        source: /vite.svg
+        destination: /vite.svg
+
+      # Specific file extensions
+      - type: rewrite
+        source: /*.js
+        destination: /:splat.js
+      - type: rewrite
+        source: /*.css
+        destination: /:splat.css
+      - type: rewrite
+        source: /*.png
+        destination: /:splat.png
+      - type: rewrite
+        source: /*.jpg
+        destination: /:splat.jpg
+      - type: rewrite
+        source: /*.svg
+        destination: /:splat.svg
+      - type: rewrite
+        source: /*.pdf
+        destination: /:splat.pdf
+
+      # Explicit SPA routes (before catch-all)
+      - type: rewrite
+        source: /about
+        destination: /index.html
+      - type: rewrite
+        source: /about/
+        destination: /index.html
+      - type: rewrite
+        source: /projects
+        destination: /index.html
+      - type: rewrite
+        source: /projects/
+        destination: /index.html
+      - type: rewrite
+        source: /blog
+        destination: /index.html
+      - type: rewrite
+        source: /blog/
+        destination: /index.html
+      - type: rewrite
+        source: /contact
+        destination: /index.html
+      - type: rewrite
+        source: /contact/
+        destination: /index.html
+
+      # SPA catch-all fallback (must be last)
       - type: rewrite
         source: /*
         destination: /index.html
