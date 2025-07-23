@@ -113,7 +113,7 @@ const storyChapters: StoryChapter[] = [
   },
   {
     id: 'bachelor-degree',
-    title: 'Higher Education Journey',
+    title: 'Bachelor Degree',
     subtitle: 'BA from Dr BR Ambedkar Open University',
     content: [
       "I pursued my Bachelor's degree (BA) from Dr BR Ambedkar Open University, which gave me the flexibility to explore different areas of knowledge while maintaining focus on my core interests.",
@@ -131,7 +131,7 @@ const storyChapters: StoryChapter[] = [
   },
   {
     id: 'mca-journey',
-    title: 'Discovering My Passion',
+    title: 'Higher Education Journey',
     subtitle: 'MCA from Aurora Deemed University',
     content: [
       "My MCA (Master of Computer Applications) from Aurora Deemed to be University was the turning point where I discovered my true calling in technology and software development.",
