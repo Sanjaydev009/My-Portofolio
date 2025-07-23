@@ -7,9 +7,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm run dev",
     "client": "cd frontend && npm start",
-    "build": "cd frontend && npm run build",
+    "build": "cd frontend && npm run build:production",
     "install-server": "cd backend && npm install",
-    "install-client": "cd frontend && npm install",
+    "install-client": "cd frontend && npm install --legacy-peer-deps",
     "install-all": "npm run install-server && npm run install-client",
     "heroku-postbuild": "npm run install-all && npm run build"
   },
