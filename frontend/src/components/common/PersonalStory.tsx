@@ -108,7 +108,7 @@ const storyChapters: StoryChapter[] = [
     icon: School,
     mood: 'inspiring',
     tags: ['Intermediate', 'TS Model College', 'Career Planning', 'Critical Thinking'],
-    year: '2016-2018',
+    year: '2015-2017',
     location: 'Kodakandla'
   },
   {
@@ -181,7 +181,7 @@ const storyChapters: StoryChapter[] = [
     icon: Work,
     mood: 'inspiring',
     tags: ['Internship', 'Heydu Services', 'Real-time Experience', 'Live Projects', 'Professional Growth'],
-    year: '2024',
+    year: '2025',
     location: 'Heydu Services Pvt Ltd'
   },
   {
@@ -192,8 +192,8 @@ const storyChapters: StoryChapter[] = [
       "February 5th, 2025 - a date I'll never forget. This was when I officially started my career as a software developer at Heydu Services Pvt Ltd. The internship had led to a full-time opportunity that changed my life!",
       "I am eternally grateful to Srinivas Sir and Siddhartha for believing in my potential and giving me this incredible opportunity to improve my skills and grow as a developer. Their mentorship has been invaluable.",
       "At Heydu Services (https://heydu.biz/), I gained real-time hands-on experience working on live production projects. Every day brought new challenges, learning opportunities, and the excitement of contributing to applications that serve real users.",
-      "Srinivas Sir's guidance taught me not just technical skills but also the importance of professionalism, teamwork, and continuous learning. His faith in my abilities gave me the confidence to take on challenging projects.",
-      "Siddhartha's support and collaborative approach showed me how great software is built through teamwork and shared knowledge. Working with both of them has been a privilege and a tremendous learning experience.",
+      "Siddhartha's guidance taught me not just technical skills but also the importance of professionalism, teamwork, and continuous learning. His faith in my abilities gave me the confidence to take on challenging projects.",
+      "Srinivas Sir's support and collaborative approach showed me how great software is built through teamwork and shared knowledge. Working with both of them has been a privilege and a tremendous learning experience.",
       "This job isn't just about earning a living - it's about contributing to meaningful projects, solving real-world problems, and being part of a team that values innovation and excellence. The real-time experience I'm gaining here is shaping me into a professional developer."
     ],
     theme: 'achievement',
