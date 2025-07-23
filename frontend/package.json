@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
+    "build:render": "npm ci --legacy-peer-deps && npm run build",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "npm run dev"
@@ -21,8 +22,8 @@
     "@types/react-syntax-highlighter": "^15.5.13",
     "axios": "^1.10.0",
     "framer-motion": "^12.20.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
     "react-hook-form": "^7.59.0",
     "react-query": "^3.39.3",
