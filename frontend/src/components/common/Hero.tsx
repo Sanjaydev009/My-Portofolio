@@ -31,6 +31,10 @@ import { Link as RouterLink } from 'react-router-dom';
 import InteractiveBackground from './InteractiveBackground';
 import TypewriterEffect from './TypewriterEffect';
 
+// Import static assets to ensure they're bundled
+import profileImage from '/images/sanju.jpg';
+import resumeFile from '/documents/Sanju_Resume.pdf';
+
 const Hero: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -58,9 +62,11 @@ const Hero: React.FC = () => {
 
   const handleDownloadResume = async () => {
     try {
+      // First try with the imported asset URL
       const success = await ResumeDownloadService.downloadResume({
         filename: 'Sanju_Resume.pdf',
         showUserFeedback: true,
+        fallbackUrl: resumeFile, // Use imported asset as fallback
       });
 
       if (success) {
@@ -367,7 +373,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <Avatar
-                    src="/images/sanju.jpg" 
+                    src={profileImage}
                     alt="Bandi Sanjay Profile"
                     sx={{
                       width: isMobile ? 250 : 350,

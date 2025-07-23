@@ -3,6 +3,10 @@ import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Button,
 import { ExpandMore, BugReport } from '@mui/icons-material';
 import ResumeDownloadService from '../../utils/resumeDownload';
 
+// Import static assets for testing
+import profileImage from '/images/sanju.jpg';
+import resumeFile from '/documents/Sanju_Resume.pdf';
+
 /**
  * Debug Component - Only visible in development or when explicitly enabled
  * Helps troubleshoot deployment issues
@@ -29,8 +33,10 @@ const DebugPanel: React.FC = () => {
       origin: window.location.origin,
       pathname: window.location.pathname,
       staticPaths: {
-        profileImage: '/images/sanju.jpg',
-        resume: '/documents/Sanju_Resume.pdf',
+        profileImage: profileImage,
+        resume: resumeFile,
+        profileImagePath: '/images/sanju.jpg',
+        resumePath: '/documents/Sanju_Resume.pdf',
       },
     };
 
@@ -43,7 +49,7 @@ const DebugPanel: React.FC = () => {
     }
 
     try {
-      const imageResponse = await fetch('/images/sanju.jpg', { method: 'HEAD' });
+      const imageResponse = await fetch(profileImage, { method: 'HEAD' });
       info.imageAccessible = imageResponse.ok;
       info.imageStatus = imageResponse.status;
     } catch (error) {
@@ -119,7 +125,7 @@ const DebugPanel: React.FC = () => {
             <Button
               size="small"
               variant="outlined"
-              onClick={() => window.open('/images/sanju.jpg', '_blank')}
+              onClick={() => window.open(profileImage, '_blank')}
               fullWidth
               sx={{ mb: 1 }}
             >
@@ -128,7 +134,7 @@ const DebugPanel: React.FC = () => {
             <Button
               size="small"
               variant="outlined"
-              onClick={() => window.open('/documents/Sanju_Resume.pdf', '_blank')}
+              onClick={() => window.open(resumeFile, '_blank')}
               fullWidth
             >
               Test Resume Direct Link

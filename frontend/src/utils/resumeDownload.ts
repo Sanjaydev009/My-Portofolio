@@ -28,9 +28,14 @@ export class ResumeDownloadService {
       fallbackUrl
     } = options;
 
+    // Include fallbackUrl in paths if provided
+    const pathsToTry = fallbackUrl 
+      ? [fallbackUrl, ...this.RESUME_PATHS]
+      : this.RESUME_PATHS;
+
     // Try each download method
     for (const method of [this.fetchAndDownload, this.directLinkDownload]) {
-      for (const path of this.RESUME_PATHS) {
+      for (const path of pathsToTry) {
         try {
           const success = await method(path, filename);
           if (success) {

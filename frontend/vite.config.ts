@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Use relative paths for better deployment compatibility
+  base: '/', // Use absolute paths for deployment
   build: {
     rollupOptions: {
       output: {
@@ -19,15 +19,15 @@ export default defineConfig({
         },
       },
     },
-    // Optimize asset handling
-    assetsInlineLimit: 2048, // 2kb - smaller files will be inlined (reduced to avoid inlining PDFs)
-    chunkSizeWarningLimit: 1000, // Increase warning limit for larger chunks
-    sourcemap: false, // Disable sourcemaps in production for better performance
-    // Enable additional optimizations
+    // Optimize asset handling for static deployment
+    assetsInlineLimit: 0, // Don't inline any assets - serve all as separate files
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
     minify: 'terser',
-    // Copy static assets properly
+    // Ensure proper static asset copying
     copyPublicDir: true,
     outDir: 'dist',
+    emptyOutDir: true, // Clean dist folder before build
   },
   // Ensure proper asset serving
   publicDir: 'public',
@@ -35,6 +35,6 @@ export default defineConfig({
     open: true,
     port: 3000,
   },
-  // Handle different file types properly
+  // Handle different file types properly - force external serving
   assetsInclude: ['**/*.pdf', '**/*.jpg', '**/*.png', '**/*.svg', '**/*.ico'],
 })
