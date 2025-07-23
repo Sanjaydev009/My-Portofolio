@@ -5,30 +5,52 @@ services:
     buildCommand: cd frontend && npm ci --legacy-peer-deps && npm run build
     staticPublishPath: frontend/dist
     routes:
-      # Static assets - serve directly with proper paths
+      # Static assets - serve directly (highest priority)
       - type: rewrite
         source: /assets/*
-        destination: /assets/$1
+        destination: /assets/:splat
       - type: rewrite
         source: /documents/*
-        destination: /documents/$1
+        destination: /documents/:splat
       - type: rewrite
         source: /images/*
-        destination: /images/$1
-      # Handle specific file extensions
+        destination: /images/:splat
+
+      # Handle file extensions
       - type: rewrite
         source: /*.pdf
-        destination: /$1.pdf
+        destination: /:splat.pdf
       - type: rewrite
         source: /*.jpg
-        destination: /$1.jpg
+        destination: /:splat.jpg
       - type: rewrite
         source: /*.png
-        destination: /$1.png
+        destination: /:splat.png
       - type: rewrite
         source: /*.svg
-        destination: /$1.svg
-      # SPA fallback for client-side routing - MUST be last
+        destination: /:splat.svg
+      - type: rewrite
+        source: /*.js
+        destination: /:splat.js
+      - type: rewrite
+        source: /*.css
+        destination: /:splat.css
+
+      # Explicit SPA routes - handle specific client-side routes
+      - type: rewrite
+        source: /about
+        destination: /index.html
+      - type: rewrite
+        source: /projects
+        destination: /index.html
+      - type: rewrite
+        source: /blog
+        destination: /index.html
+      - type: rewrite
+        source: /contact
+        destination: /index.html
+
+      # SPA fallback for any other routes
       - type: rewrite
         source: /*
         destination: /index.html
