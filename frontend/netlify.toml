@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+# Asset redirects - bundled assets first
+[[redirects]]
+  from = "/assets/*"
+  to = "/assets/:splat"
+  status = 200
+  force = true
+
+# Legacy asset paths for compatibility  
 [[redirects]]
   from = "/documents/*"
   to = "/documents/:splat"
@@ -14,16 +22,17 @@
   status = 200
   force = true
 
-[[redirects]]  
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-  force = true
-
+# SPA routing - catch all client-side routes
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Headers for bundled assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/documents/*"
