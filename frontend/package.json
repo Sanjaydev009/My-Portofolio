@@ -7,6 +7,7 @@
     "dev": "vite --host",
     "build": "tsc -b && vite build",
     "build:render": "npm ci --legacy-peer-deps && npm run build",
+    "build:production": "npm install --legacy-peer-deps && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "npm run dev"
@@ -21,6 +22,7 @@
     "@tanstack/react-query": "^5.81.5",
     "@types/react-syntax-highlighter": "^15.5.13",
     "axios": "^1.10.0",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.20.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
