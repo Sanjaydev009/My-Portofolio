@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Use absolute paths for deployment
+  base: '/', // Clean base path for static hosting
   build: {
     rollupOptions: {
       output: {
@@ -29,9 +29,8 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true, // Clean dist folder before build
   },
-  // Ensure proper asset serving
-  publicDir: 'public',
   server: {
+    host: true,
     open: true,
     port: 3000,
   },

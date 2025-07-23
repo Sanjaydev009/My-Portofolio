@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: sanjay-portfolio-simple
-    env: node
-    buildCommand: npm install && cd frontend && npm ci --legacy-peer-deps && npm run build && cd ..
-    startCommand: node server.js
-    healthCheckPath: /
