@@ -89,7 +89,7 @@ const contactMethods: ContactMethod[] = [
     icon: Coffee,
     title: 'Coffee Chat',
     description: 'Let\'s meet in person if you\'re in the area',
-    value: 'Mumbai, India',
+    value: 'Hyderabad, India',
     action: null,
     color: '#f59e0b',
     availability: 'Weekends preferred',
