@@ -20,7 +20,6 @@ import { motion } from 'framer-motion';
 import { Link as RouterLink } from 'react-router-dom';
 import InteractiveBackground from './InteractiveBackground';
 import TypewriterEffect from './TypewriterEffect';
-// import profileImage from '../../assets/images/sanju.jpg'; // Uncomment if you want to use the import method
 
 const Hero: React.FC = () => {
   const theme = useTheme();
