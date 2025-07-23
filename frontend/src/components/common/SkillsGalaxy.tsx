@@ -51,16 +51,10 @@ const skills: Skill[] = [
   { id: 'nodejs', name: 'Node.js', level: 88, category: 'Backend', x: -120, y: -60, z: 10, color: '#339933', connections: ['typescript', 'mongodb', 'express'], description: 'Server-side JavaScript runtime', projects: ['REST APIs', 'Microservices', 'Real-time apps'] },
   { id: 'express', name: 'Express.js', level: 85, category: 'Backend', x: -150, y: 20, z: -20, color: '#404040', connections: ['nodejs', 'mongodb', 'jwt'], description: 'Minimal and flexible Node.js web framework', projects: ['API servers', 'Authentication systems', 'Middleware'] },
   { id: 'mongodb', name: 'MongoDB', level: 80, category: 'Backend', x: -200, y: -20, z: 30, color: '#47a248', connections: ['nodejs', 'express', 'mongoose'], description: 'NoSQL database for modern applications', projects: ['User management', 'Content systems', 'Analytics'] },
-  { id: 'graphql', name: 'GraphQL', level: 75, category: 'Backend', x: -100, y: -120, z: -10, color: '#e10098', connections: ['nodejs', 'react', 'apollo'], description: 'Query language for APIs', projects: ['Data aggregation', 'Client-server communication'] },
   
   // DevOps & Tools
   { id: 'docker', name: 'Docker', level: 82, category: 'DevOps', x: 150, y: -80, z: -40, color: '#2496ed', connections: ['kubernetes', 'cicd', 'aws'], description: 'Containerization for consistent deployments', projects: ['Development environments', 'Production deployments'] },
-  { id: 'aws', name: 'AWS', level: 78, category: 'DevOps', x: 200, y: 40, z: 20, color: '#ff9900', connections: ['docker', 'kubernetes', 'terraform'], description: 'Cloud computing services', projects: ['Scalable infrastructure', 'Serverless functions'] },
   { id: 'git', name: 'Git', level: 95, category: 'DevOps', x: 80, y: -120, z: 60, color: '#f05032', connections: ['github', 'cicd'], description: 'Version control and collaboration', projects: ['All projects', 'Open source contributions'] },
-  
-  // Design & UX
-  { id: 'figma', name: 'Figma', level: 75, category: 'Design', x: -60, y: 120, z: -50, color: '#f24e1e', connections: ['ux', 'prototyping'], description: 'UI/UX design and prototyping', projects: ['Design systems', 'User interfaces', 'Prototypes'] },
-  { id: 'ux', name: 'UX Design', level: 70, category: 'Design', x: 40, y: 150, z: 10, color: '#ff6b6b', connections: ['figma', 'user-research'], description: 'User experience design principles', projects: ['User flows', 'Wireframes', 'User testing'] },
   
   // AI & Data
   { id: 'python', name: 'Python', level: 80, category: 'AI/ML', x: -180, y: 80, z: 50, color: '#3776ab', connections: ['tensorflow', 'data-analysis'], description: 'Programming for AI and data science', projects: ['Machine learning models', 'Data analysis', 'Automation'] },

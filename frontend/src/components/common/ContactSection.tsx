@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Container,
   Typography,
@@ -169,39 +169,61 @@ const ContactSection: React.FC = () => {
   const [isSending, setIsSending] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
-  // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init("h3kC19B1uve366yko");
-  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (isSending) return; // Prevent multiple submissions
     
+    // Check internet connectivity
+    if (!navigator.onLine) {
+      alert('No internet connection. Please check your network and try again.');
+      return;
+    }
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    
     setIsSending(true);
     
-    const templateParams = {
-      from_name: formData.name,
-      reply_to: formData.email,
-      company: formData.company || 'Not provided',
-      message: formData.message,
-      subject: selectedReason ? contactReasons.find(r => r.id === selectedReason)?.label : 'General Inquiry',
-      to_name: 'Sanjay Bandi',
-      to_email: 'sanjaybandi009@gmail.com'
-    };
+    try {
+      // Initialize EmailJS with your User ID
+      emailjs.init("h3kC19B1uve366yko");
+      
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        reply_to: formData.email,
+        company: formData.company || 'Not provided',
+        message: formData.message,
+        subject: selectedReason ? contactReasons.find(r => r.id === selectedReason)?.label : 'General Inquiry',
+        to_name: 'Sanjay Bandi',
+        to_email: 'sanjaybandi009@gmail.com'
+      };
 
-    console.log('Sending email with params:', templateParams);
-    
-    // EmailJS service details - make sure these match your EmailJS template parameters
-    emailjs.send(
-      'service_lns5hff',   // EmailJS Service ID
-      'template_i0c2orp',  // EmailJS Template ID
-      templateParams
-    )
-    .then((result) => {
-      console.log('Email sent successfully!', result.text);
+      console.log('Sending email with params:', templateParams);
+      console.log('Service ID:', 'service_lns5hff');
+      console.log('Template ID:', 'template_i0c2orp');
+      
+      // EmailJS service details - make sure these match your actual EmailJS setup
+      const result = await emailjs.send(
+        'service_lns5hff',   // Make sure this matches your EmailJS Service ID
+        'template_i0c2orp',  // Make sure this matches your EmailJS Template ID
+        templateParams,
+        'h3kC19B1uve366yko'  // Your EmailJS Public Key (User ID)
+      );
+      
+      console.log('Email sent successfully!', result);
       setIsSending(false);
       setIsSubmitted(true);
       setFormData({
@@ -210,13 +232,31 @@ const ContactSection: React.FC = () => {
         company: '',
         message: ''
       });
+      setSelectedReason('');
       setTimeout(() => setIsSubmitted(false), 5000);
-    })
-    .catch((error) => {
+      
+    } catch (error) {
       console.error('Failed to send email:', error);
       setIsSending(false);
-      alert('Failed to send your message. Please try again or contact directly via email: sanjaybandi009@gmail.com');
-    });
+      
+      // More detailed error handling
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        
+        // Check for specific EmailJS errors
+        if (error.message.includes('403')) {
+          alert('Email service authentication failed. Please contact the site administrator.');
+        } else if (error.message.includes('400')) {
+          alert('Invalid email parameters. Please check your input and try again.');
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          alert('Network error. Please check your internet connection and try again.');
+        } else {
+          alert(`Failed to send your message: ${error.message}. Please try again or contact directly via email: sanjaybandi009@gmail.com`);
+        }
+      } else {
+        alert('Failed to send your message. Please check your internet connection and try again or contact directly via email: sanjaybandi009@gmail.com');
+      }
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {

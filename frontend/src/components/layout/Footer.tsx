@@ -27,8 +27,8 @@ const Footer: React.FC = () => {
   ];
 
   const contactInfo = [
-    { icon: <Email />, text: 'sanjay.bandi@aurora.edu.in', href: 'mailto:sanjay.bandi@aurora.edu.in' },
-    { icon: <Phone />, text: '+91 9325469450', href: 'tel:+91 9325469450' },
+    { icon: <Email />, text: 'sanjaybandi009@gmail.com', href: 'mailto:sanjaybandi009@gmail.com' },
+    { icon: <Phone />, text: '+91 9325469450', href: 'tel:+919325469450' },
     { icon: <LocationOn />, text: 'Hyderabd, India', href: null },
   ];
 

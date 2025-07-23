@@ -26,7 +26,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { toast } from 'react-toastify';
-import { contactService } from '../services/contact';
+import emailjs from 'emailjs-com';
 
 const schema = yup.object().shape({
   name: yup.string().required('Name is required').min(2, 'Name must be at least 2 characters'),
@@ -64,44 +64,84 @@ const Contact: React.FC = () => {
     {
       icon: <Email />,
       title: 'Email',
-      value: 'your.email@example.com',
-      href: 'mailto:your.email@example.com',
+      value: 'sanjaybandi009@gmail.com',
+      href: 'mailto:sanjaybandi009@gmail.com',
     },
     {
       icon: <Phone />,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
+      value: '+91 9325469450',
+      href: 'tel:+919325469450',
     },
     {
       icon: <LocationOn />,
       title: 'Location',
-      value: 'Your City, Country',
+      value: 'Mumbai, India',
       href: null,
     },
   ];
 
   const socialLinks = [
-    { icon: <GitHub />, url: 'https://github.com', label: 'GitHub' },
-    { icon: <LinkedIn />, url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: <Twitter />, url: 'https://twitter.com', label: 'Twitter' },
+    { icon: <GitHub />, url: 'https://github.com/Sanjaydev009', label: 'GitHub' },
+    { icon: <LinkedIn />, url: 'https://www.linkedin.com/in/bandi-sanjay-3431ab248/', label: 'LinkedIn' },
+    { icon: <Twitter />, url: 'https://twitter.com/SanjayBandi009', label: 'Twitter' },
   ];
 
   const onSubmit = async (data: ContactFormData) => {
     try {
-      // Add the required fields that aren't in the form
-      const contactData: import('../types').ContactFormData = {
-        ...data,
-        projectType: 'web', // default value
-        budget: 'Not specified',
-        timeline: 'Not specified',
+      // Check internet connectivity
+      if (!navigator.onLine) {
+        toast.error('No internet connection. Please check your network and try again.');
+        return;
+      }
+
+      // Initialize EmailJS with your User ID
+      emailjs.init("h3kC19B1uve366yko");
+      
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        reply_to: data.email,
+        subject: data.subject,
+        message: data.message,
+        to_name: 'Sanjay Bandi',
+        to_email: 'sanjaybandi009@gmail.com'
       };
-      await contactService.submitContact(contactData);
+
+      console.log('Sending email with params:', templateParams);
+      
+      // EmailJS service details - make sure these match your actual EmailJS setup
+      const result = await emailjs.send(
+        'service_lns5hff',   // Make sure this matches your EmailJS Service ID
+        'template_i0c2orp',  // Make sure this matches your EmailJS Template ID
+        templateParams,
+        'h3kC19B1uve366yko'  // Your EmailJS Public Key (User ID)
+      );
+      
+      console.log('Email sent successfully!', result);
       toast.success('Message sent successfully! I\'ll get back to you soon.');
       reset();
+      
     } catch (error) {
-      toast.error('Failed to send message. Please try again.');
       console.error('Contact form error:', error);
+      
+      // More detailed error handling
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+        
+        // Check for specific EmailJS errors
+        if (error.message.includes('403')) {
+          toast.error('Email service authentication failed. Please try again or contact directly via email.');
+        } else if (error.message.includes('400')) {
+          toast.error('Invalid email parameters. Please check your input and try again.');
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+          toast.error('Network error. Please check your internet connection and try again.');
+        } else {
+          toast.error(`Failed to send message: ${error.message}. Please try again.`);
+        }
+      } else {
+        toast.error('Failed to send message. Please try again or contact directly via email.');
+      }
     }
   };
 

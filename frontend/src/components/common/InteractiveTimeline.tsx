@@ -41,75 +41,174 @@ interface TimelineEvent {
 const timelineData: TimelineEvent[] = [
   {
     id: '1',
-    date: '2024',
-    title: 'Senior Full Stack Developer',
-    description: 'Leading development of scalable web applications using modern technologies.',
-    category: 'work',
-    location: 'Tech Company',
-    tags: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
-    color: '#4f46e5',
+    date: '2025-04',
+    title: 'Advanced Portfolio Website Development',
+    description: 'Built comprehensive portfolio website showcasing skills, projects, and achievements using modern web technologies.',
+    category: 'project',
+    location: 'Personal Project',
+    tags: ['React', 'TypeScript', 'Material-UI', 'Performance Optimization'],
+    color: '#ec4899',
     details: {
-      skills: ['Team Leadership', 'System Architecture', 'Performance Optimization'],
-      impact: 'Improved application performance by 40% and reduced load times significantly',
+      skills: ['React', 'TypeScript', 'Responsive Design', 'Performance Optimization'],
+      impact: 'Created professional online presence showcasing technical skills with 95/100 performance score',
       links: [
-        { label: 'Portfolio', url: '#projects' },
-        { label: 'LinkedIn', url: '#' }
+        { label: 'Live Portfolio', url: 'https://sanjay-portfolio.vercel.app' },
+        { label: 'Source Code', url: 'https://github.com/Sanjaydev009/My-Portofolio' }
       ]
     }
   },
   {
     id: '2',
-    date: '2023',
-    title: 'Hackathon Winner',
-    description: 'Won first place in National Coding Championship with innovative solution.',
-    category: 'achievement',
-    location: 'Tech Hub',
-    tags: ['Innovation', 'Problem Solving', 'AI/ML'],
-    color: '#f59e0b',
+    date: '2025-02',
+    title: '6 Months Full Stack Internship at Heydu Services',
+    description: 'Completed advanced internship working on production-level projects and mentoring junior developers.',
+    category: 'work',
+    location: 'Heydu Services Pvt Ltd',
+    tags: ['Full Stack Development', 'MERN Stack', 'Team Leadership', 'Mentoring'],
+    color: '#8b5cf6',
     details: {
-      impact: 'Developed AI-powered solution that helps small businesses optimize inventory',
-      links: [{ label: 'Project Demo', url: '#' }]
+      skills: ['Team Leadership', 'Production Systems', 'Mentoring', 'MERN Stack'],
+      impact: 'Led development initiatives, mentored junior developers, and contributed to multiple production applications',
+      links: [
+        { label: 'Company Profile', url: '#company' }
+      ]
     }
   },
   {
     id: '3',
-    date: '2022',
-    title: 'Computer Science Degree',
-    description: 'Graduated with honors, specializing in Software Engineering and AI.',
-    category: 'education',
-    location: 'University Name',
-    tags: ['Computer Science', 'AI', 'Software Engineering'],
-    color: '#10b981',
+    date: '2024-03',
+    title: 'First Rank in MCA Academics',
+    description: 'Achieved first rank among all MCA students, recognized for outstanding academic performance and dedication.',
+    category: 'achievement',
+    location: 'University',
+    tags: ['Academic Excellence', 'First Rank', 'University Recognition'],
+    color: '#f59e0b',
     details: {
-      skills: ['Data Structures', 'Algorithms', 'Machine Learning', 'Database Design'],
-      impact: 'GPA: 3.8/4.0, Dean\'s List for 3 consecutive semesters'
+      skills: ['Academic Leadership', 'Problem Solving', 'Research'],
+      impact: 'Recognized by university for exceptional academic performance with 9.2/10 CGPA',
+      links: [
+        { label: 'Achievement Certificate', url: '#achievement' }
+      ]
     }
   },
   {
     id: '4',
-    date: '2022',
-    title: 'Travel Photography in Japan',
-    description: 'Explored Japanese culture and captured stunning landscapes across 15 cities.',
-    category: 'travel',
-    location: 'Japan',
-    tags: ['Photography', 'Culture', 'Adventure'],
-    color: '#ec4899',
+    date: '2024-01',
+    title: 'Master of Computer Applications (MCA)',
+    description: 'Completed MCA with first rank, demonstrating academic excellence and deep understanding of computer science concepts.',
+    category: 'education',
+    location: 'University',
+    tags: ['Post Graduate Degree', 'Computer Science', 'Software Engineering'],
+    color: '#ff9900',
     details: {
-      impact: 'Published photo series featured in local gallery, learned about minimalism and design principles'
+      skills: ['Software Engineering', 'Database Management', 'Advanced Programming'],
+      impact: 'Gained comprehensive theoretical knowledge and practical skills in advanced computer science topics with 9.2/10 CGPA',
+      links: [
+        { label: 'Academic Certificate', url: '#certificate' }
+      ]
     }
   },
   {
     id: '5',
-    date: '2021',
-    title: 'Open Source Contributor',
-    description: 'Started contributing to major open source projects and maintained personal projects.',
+    date: '2024-06',
+    title: '3 Months Internship at Edu-versity',
+    description: 'Completed first professional internship gaining real-world development experience and industry best practices.',
+    category: 'work',
+    location: 'Edu-versity',
+    tags: ['Internship', 'Professional Growth', 'Web Development'],
+    color: '#06b6d4',
+    details: {
+      skills: ['Professional Development', 'Team Collaboration', 'Industry Experience'],
+      impact: 'Gained valuable industry experience, learned professional development practices, and built confidence in teamwork',
+      links: [
+        { label: 'Internship Certificate', url: '#internship' }
+      ]
+    }
+  },
+  {
+    id: '6',
+    date: '2023-12',
+    title: 'Student Feedback Management System',
+    description: 'Developed comprehensive feedback management system with advanced features like real-time analytics and dashboard.',
     category: 'project',
-    location: 'Remote',
-    tags: ['Open Source', 'Community', 'GitHub'],
+    location: 'Academic Project',
+    tags: ['MERN Stack', 'Real-time Analytics', 'System Design'],
+    color: '#10b981',
+    details: {
+      skills: ['MERN Stack', 'Real-time Analytics', 'Dashboard Development', 'User Management'],
+      impact: 'Successfully deployed complex system demonstrating ability to handle large-scale application development with 500+ users supported',
+      links: [
+        { label: 'GitHub Repository', url: 'https://github.com/Sanjaydev009/student-feedback-system' },
+        { label: 'Live Demo', url: '#demo' }
+      ]
+    }
+  },
+  {
+    id: '7',
+    date: '2022-09',
+    title: 'Full Stack Development Transition',
+    description: 'Expanded skillset to backend technologies including Node.js, Express.js, MongoDB, and API development.',
+    category: 'achievement',
+    location: 'Self Learning',
+    tags: ['Node.js', 'Express.js', 'MongoDB', 'Full Stack'],
     color: '#8b5cf6',
     details: {
-      skills: ['Git/GitHub', 'Code Review', 'Documentation', 'Community Building'],
-      impact: '50+ contributions, 500+ GitHub stars across projects'
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Backend Development'],
+      impact: 'Became a full-stack developer capable of building end-to-end web applications independently',
+      links: [
+        { label: 'Portfolio Projects', url: '#projects' }
+      ]
+    }
+  },
+  {
+    id: '8',
+    date: '2022-03',
+    title: 'React Framework Specialization',
+    description: 'Specialized in React.js ecosystem including hooks, state management, routing, and modern development patterns.',
+    category: 'achievement',
+    location: 'Self Learning',
+    tags: ['React.js', 'Hooks', 'State Management', 'Component Architecture'],
+    color: '#06b6d4',
+    details: {
+      skills: ['React.js', 'Hooks', 'State Management', 'Component Architecture', 'SPA Development'],
+      impact: 'Became proficient in building modern, interactive web applications with component-based architecture',
+      links: [
+        { label: 'React Projects', url: '#react-projects' }
+      ]
+    }
+  },
+  {
+    id: '9',
+    date: '2021-08',
+    title: 'JavaScript & Programming Logic',
+    description: 'Mastered JavaScript fundamentals, ES6+ features, and developed strong programming logic and problem-solving skills.',
+    category: 'achievement',
+    location: 'Self Learning',
+    tags: ['JavaScript', 'ES6+', 'Problem Solving', 'Programming Logic'],
+    color: '#f59e0b',
+    details: {
+      skills: ['JavaScript', 'ES6+', 'DOM Manipulation', 'Async Programming', 'Problem Solving'],
+      impact: 'Built solid foundation in programming concepts, algorithms, and modern JavaScript development practices',
+      links: [
+        { label: 'JavaScript Projects', url: '#js-projects' }
+      ]
+    }
+  },
+  {
+    id: '10',
+    date: '2021-01',
+    title: 'Started Programming Journey',
+    description: 'Began coding journey with curiosity about how websites and applications work, starting with basic HTML and CSS.',
+    category: 'personal',
+    location: 'Self Learning',
+    tags: ['HTML', 'CSS', 'Web Development', 'Learning'],
+    color: '#10b981',
+    details: {
+      skills: ['HTML', 'CSS', 'Web Development', 'Foundation Building'],
+      impact: 'Discovered passion for web development and decided to pursue computer science as a career path',
+      links: [
+        { label: 'First Projects', url: '#first-projects' }
+      ]
     }
   }
 ];
