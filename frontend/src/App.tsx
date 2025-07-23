@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 // Context Providers
 import { CustomThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
-import { SocketProvider } from './context/SocketContext';
+// import { SocketProvider } from './context/SocketContext'; // DISABLED: No backend needed
 
 // Layout
 import Layout from './components/layout/Layout';
@@ -22,13 +22,16 @@ import Contact from './pages/Contact';
 // Lazy load Blog page for better performance
 const Blog = React.lazy(() => import('./pages/Blog'));
 
-// Create a query client
+// Create a query client - optimized for frontend-only mode
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 3,
+      retry: 0, // Don't retry failed requests
       refetchOnWindowFocus: false,
-      staleTime: 5 * 60 * 1000, // 5 minutes
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+      staleTime: Infinity, // Consider data always fresh
+      gcTime: Infinity, // Keep data in cache indefinitely
     },
   },
 });
@@ -38,7 +41,7 @@ const App: React.FC = () => {
     <QueryClientProvider client={queryClient}>
       <CustomThemeProvider>
         <AuthProvider>
-          <SocketProvider>
+          {/* <SocketProvider> // DISABLED: No backend socket connection needed */}
             <CssBaseline />
             <Router>
               <Routes>
@@ -71,7 +74,7 @@ const App: React.FC = () => {
               pauseOnHover
               theme="colored"
             />
-          </SocketProvider>
+          {/* </SocketProvider> */}
         </AuthProvider>
       </CustomThemeProvider>
     </QueryClientProvider>

@@ -15,13 +15,19 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
-    /* Linting - Made less strict for deployment */
+    /* Linting - Optimized for deployment */
     "strict": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": false
+    "noUncheckedSideEffectImports": false,
+    
+    /* Additional deployment optimizations */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
   "include": ["src"]
 }

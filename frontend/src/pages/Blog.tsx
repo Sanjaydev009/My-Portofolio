@@ -224,18 +224,23 @@ const Blog: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   
-  const { data: blogsResponse, isLoading } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: () => blogService.getBlogs(),
-    retry: 0, // Don't retry failed requests
-    retryOnMount: false,
-    refetchOnWindowFocus: false,
-  });
+  // DISABLED: API calls since we're using frontend-only mode
+  // const { data: blogsResponse, isLoading, error } = useQuery({
+  //   queryKey: ['blogs', { category, search: searchQuery }],
+  //   queryFn: () => blogService.getBlogs({ 
+  //     category: category === 'all' ? undefined : category, 
+  //     search: searchQuery || undefined,
+  //     limit: 20
+  //   }),
+  //   retry: 0, // Don't retry failed requests
+  //   retryOnMount: false,
+  //   refetchOnWindowFocus: false,
+  // });
 
-  // Always use fallback data if API fails or returns no data
-  const posts = (blogsResponse?.blogs && blogsResponse.blogs.length > 0) 
-    ? blogsResponse.blogs 
-    : mockBlogPosts;
+  // Use mock data instead of API response
+  const blogPosts = mockBlogPosts;
+  const isLoading = false;
+  const error = null;
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -251,10 +256,10 @@ const Blog: React.FC = () => {
 
   // Get all unique tags
   const allTags = React.useMemo(() => {
-    if (!posts) return [];
-    const tags = posts.flatMap((post: BlogPost) => post.tags || []);
+    if (!blogPosts) return [];
+    const tags = blogPosts.flatMap((post: BlogPost) => post.tags || []);
     return Array.from(new Set(tags)).filter((tag): tag is string => typeof tag === 'string');
-  }, [posts]);
+  }, [blogPosts]);
 
   const handleTagToggle = (tag: string) => {
     setSelectedTags(prev => 
@@ -265,9 +270,9 @@ const Blog: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!posts) return;
+    if (!blogPosts) return;
 
-    let filtered = posts.filter((post: BlogPost) => post.status === 'published');
+    let filtered = blogPosts.filter((post: BlogPost) => post.status === 'published');
 
     // Filter by search query
     if (searchQuery) {
@@ -288,7 +293,7 @@ const Blog: React.FC = () => {
     }
 
     setFilteredPosts(filtered);
-  }, [posts, searchQuery, selectedTags]);
+  }, [blogPosts, searchQuery, selectedTags]);
 
   if (isLoading) {
     return <Loading message="Loading blog posts..." />;

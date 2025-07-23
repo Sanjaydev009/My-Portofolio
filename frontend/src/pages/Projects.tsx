@@ -208,18 +208,18 @@ const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   
-  const { data: projectsResponse, isLoading } = useQuery({
-    queryKey: ['projects'],
-    queryFn: () => projectService.getProjects(),
-    retry: 0, // Don't retry failed requests
-    retryOnMount: false,
-    refetchOnWindowFocus: false,
-  });
+  // DISABLED: API call since we're using frontend-only mode
+  // const { data: projectsResponse, isLoading } = useQuery({
+  //   queryKey: ['projects'],
+  //   queryFn: () => projectService.getProjects(),
+  //   retry: 0, // Don't retry failed requests
+  //   retryOnMount: false,
+  //   refetchOnWindowFocus: false,
+  // });
 
-  // Always use fallback data if API fails or returns no data
-  const projects = (projectsResponse?.projects && projectsResponse.projects.length > 0) 
-    ? projectsResponse.projects 
-    : mockProjects;
+  // Use mock data instead of API response
+  const projects = mockProjects;
+  const isLoading = false;
 
   const categories = ['all', 'web', 'mobile', 'desktop', 'api', 'other'];
   
