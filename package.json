@@ -11,7 +11,8 @@
     "install-server": "cd backend && npm install",
     "install-client": "cd frontend && npm install --legacy-peer-deps",
     "install-all": "npm run install-server && npm run install-client",
-    "heroku-postbuild": "npm run install-all && npm run build"
+    "heroku-postbuild": "npm run install-all && npm run build",
+    "start": "node server.js"
   },
   "keywords": [
     "portfolio",
@@ -26,6 +27,15 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "emailjs-com": "^3.2.0"
-  }
+    "emailjs-com": "^3.2.0",
+    "express": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanjaydev009/My-Portofolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sanjaydev009/My-Portofolio/issues"
+  },
+  "homepage": "https://github.com/Sanjaydev009/My-Portofolio#readme"
 }
