@@ -12,7 +12,7 @@ export interface ResumeDownloadOptions {
 export class ResumeDownloadService {
   private static readonly DEFAULT_FILENAME = 'Sanju_Resume.pdf';
   private static readonly RESUME_PATHS = [
-    '/documents/Sanju_Resume.pdf',
+    '/documents/Sanju_Resume.pdf', // Keep public path as fallback
     './documents/Sanju_Resume.pdf',
     '/assets/documents/Sanju_Resume.pdf',
     `${window.location.origin}/documents/Sanju_Resume.pdf`,
@@ -28,7 +28,7 @@ export class ResumeDownloadService {
       fallbackUrl
     } = options;
 
-    // Include fallbackUrl in paths if provided
+    // Include fallbackUrl (imported asset) as first priority if provided
     const pathsToTry = fallbackUrl 
       ? [fallbackUrl, ...this.RESUME_PATHS]
       : this.RESUME_PATHS;

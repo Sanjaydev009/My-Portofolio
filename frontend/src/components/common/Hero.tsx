@@ -32,8 +32,8 @@ import InteractiveBackground from './InteractiveBackground';
 import TypewriterEffect from './TypewriterEffect';
 
 // Import static assets to ensure they're bundled
-import profileImage from '/images/sanju.jpg';
-import resumeFile from '/documents/Sanju_Resume.pdf';
+import profileImage from '../../assets/images/sanju.jpg';
+import resumeFile from '../../assets/documents/Sanju_Resume.pdf';
 
 const Hero: React.FC = () => {
   const theme = useTheme();

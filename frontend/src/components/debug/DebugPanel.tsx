@@ -4,8 +4,8 @@ import { ExpandMore, BugReport } from '@mui/icons-material';
 import ResumeDownloadService from '../../utils/resumeDownload';
 
 // Import static assets for testing
-import profileImage from '/images/sanju.jpg';
-import resumeFile from '/documents/Sanju_Resume.pdf';
+import profileImage from '../../assets/images/sanju.jpg';
+import resumeFile from '../../assets/documents/Sanju_Resume.pdf';
 
 /**
  * Debug Component - Only visible in development or when explicitly enabled
