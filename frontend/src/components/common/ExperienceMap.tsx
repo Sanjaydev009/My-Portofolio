@@ -48,7 +48,7 @@ const experiences: Experience[] = [
   {
     id: 'mca-degree',
     title: 'Master of Computer Applications (MCA)',
-    organization: 'Your University',
+    organization: 'Aurora Deemed to be University',
     type: 'education',
     startDate: '2023-11',
     endDate: '2025-09',
@@ -72,7 +72,7 @@ const experiences: Experience[] = [
   {
     id: 'first-rank-academics',
     title: 'First Rank in MCA Academics',
-    organization: 'Your University',
+    organization: 'Aurora Deemed to be University',
     type: 'achievement',
     startDate: '2023-11',
     location: 'University',

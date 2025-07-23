@@ -13,6 +13,9 @@ import { AuthProvider } from './context/AuthContext';
 // Layout
 import Layout from './components/layout/Layout';
 
+// Debug Component
+import DebugPanel from './components/debug/DebugPanel';
+
 // Pages
 import Home from './pages/Home';
 import About from './pages/About';
@@ -74,6 +77,9 @@ const App: React.FC = () => {
               pauseOnHover
               theme="colored"
             />
+            
+            {/* Debug Panel - only visible in dev or with ?debug param */}
+            <DebugPanel />
           {/* </SocketProvider> */}
         </AuthProvider>
       </CustomThemeProvider>
