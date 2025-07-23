@@ -1,6 +1,19 @@
 services:
   - type: web
-    name: sanjay-portfolio
+    name: sanjay-portfolio-node
     env: node
-    buildCommand: npm install && cd frontend && npm ci --legacy-peer-deps && npm run build && cd ..
+    plan: free
+    buildCommand: |
+      echo "=== Installing root dependencies ==="
+      npm install --production
+      echo "=== Building frontend ==="
+      cd frontend
+      npm ci --legacy-peer-deps
+      npm run build
+      cd ..
+      echo "=== Build complete ==="
+      ls -la frontend/dist/
     startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production

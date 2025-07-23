@@ -3,6 +3,11 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 
+// Force this to be treated as a Node.js app
+console.log('🚀 Starting Express Server for SPA Routing');
+console.log('📍 Node.js version:', process.version);
+console.log('🔧 Environment:', process.env.NODE_ENV || 'development');
+
 // Add error handling and logging
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
@@ -13,8 +18,13 @@ app.use((req, res, next) => {
 const distPath = path.join(__dirname, 'frontend', 'dist');
 console.log('🔍 Checking dist path:', distPath);
 console.log('📁 Dist exists:', fs.existsSync(distPath));
+
 if (fs.existsSync(distPath)) {
   console.log('📋 Dist contents:', fs.readdirSync(distPath));
+} else {
+  console.error('❌ CRITICAL: frontend/dist folder not found!');
+  console.log('📁 Current directory contents:', fs.readdirSync(__dirname));
+  process.exit(1);
 }
 
 // Serve static files from the React app build (correct path for our structure)
