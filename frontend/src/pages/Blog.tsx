@@ -20,6 +20,9 @@ import { blogService } from '../services/blog';
 import { useQuery } from '@tanstack/react-query';
 import type { BlogPost } from '../types';
 
+// Import profile image
+import profileImage from '/images/sanju.jpg';
+
 // Fallback mock data for when API is not available
 const mockBlogPosts: BlogPost[] = [
   {
@@ -33,7 +36,7 @@ const mockBlogPosts: BlogPost[] = [
       name: 'Bandi Sanjay',
       email: 'sanjay.bandi@aurora.edu.in',
       role: 'admin',
-      avatar: '/images/sanju.jpg',
+      avatar: profileImage,
       bio: 'Full-stack developer passionate about modern web technologies',
       isActive: true,
       createdAt: new Date('2024-01-01'),
@@ -72,7 +75,7 @@ const mockBlogPosts: BlogPost[] = [
       name: 'Bandi Sanjay',
       email: 'sanjay.bandi@aurora.edu.in',
       role: 'admin',
-      avatar: '/images/sanju.jpg',
+      avatar: profileImage,
       bio: 'Full-stack developer passionate about modern web technologies',
       isActive: true,
       createdAt: new Date('2024-01-01'),
@@ -111,7 +114,7 @@ const mockBlogPosts: BlogPost[] = [
       name: 'Bandi Sanjay',
       email: 'sanjay.bandi@aurora.edu.in',
       role: 'admin',
-      avatar: '/images/sanju.jpg',
+      avatar: profileImage,
       bio: 'Full-stack developer passionate about modern web technologies',
       isActive: true,
       createdAt: new Date('2024-01-01'),
@@ -150,7 +153,7 @@ const mockBlogPosts: BlogPost[] = [
       name: 'Bandi Sanjay',
       email: 'sanjay.bandi@aurora.edu.in',
       role: 'admin',
-      avatar: '/images/sanju.jpg',
+      avatar: profileImage,
       bio: 'Full-stack developer passionate about modern web technologies',
       isActive: true,
       createdAt: new Date('2024-01-01'),
@@ -189,7 +192,7 @@ const mockBlogPosts: BlogPost[] = [
       name: 'Bandi Sanjay',
       email: 'sanjay.bandi@aurora.edu.in',
       role: 'admin',
-      avatar: '/images/sanju.jpg',
+      avatar: profileImage,
       bio: 'Full-stack developer passionate about modern web technologies',
       isActive: true,
       createdAt: new Date('2024-01-01'),
