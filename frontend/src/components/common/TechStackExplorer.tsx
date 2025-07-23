@@ -206,21 +206,6 @@ const technologies: Technology[] = [
     trends: 'rising',
     features: ['Django/Flask', 'Data Science', 'Automation', 'AI/ML'],
   },
-  {
-    id: 'graphql',
-    name: 'GraphQL',
-    category: 'backend',
-    proficiency: 7,
-    experience: 2,
-    projectCount: 10,
-    description: 'Query language for APIs providing efficient data fetching.',
-    color: '#e10098',
-    status: 'proficient',
-    firstUsed: '2022',
-    lastUsed: '2024',
-    trends: 'rising',
-    features: ['Type System', 'Single Endpoint', 'Real-time', 'Introspection'],
-  },
 
   // Database
   {
@@ -239,20 +224,25 @@ const technologies: Technology[] = [
     features: ['Document Store', 'Aggregation', 'Indexing', 'Sharding'],
   },
   {
-    id: 'postgresql',
-    name: 'PostgreSQL',
-    category: 'database',
+    id: "mysql",
+    name: "MySQL",
+    category: "database",
     proficiency: 7,
     experience: 3,
     projectCount: 12,
-    description: 'Advanced relational database with powerful features.',
-    color: '#336791',
-    status: 'proficient',
-    firstUsed: '2021',
-    lastUsed: '2024',
-    trends: 'stable',
-    features: ['ACID Compliance', 'JSON Support', 'Full-text Search', 'Extensions'],
-  },
+    description: "Popular open-source relational database known for reliability and performance.",
+    color: "#4479A1",
+    status: "proficient",
+    firstUsed: "2021",
+    lastUsed: "2024",
+    trends: "stable",
+    features: [
+      "ACID Compliance",
+      "Stored Procedures",
+      "Replication Support",
+      "Cross-platform Integration"
+  ]
+},
 
   // Cloud & DevOps
   {
@@ -265,8 +255,8 @@ const technologies: Technology[] = [
     description: 'Comprehensive cloud platform for scalable infrastructure.',
     color: '#ff9900',
     status: 'expert',
-    firstUsed: '2021',
-    lastUsed: '2024',
+    firstUsed: '2025',
+    lastUsed: '2025',
     trends: 'stable',
     certifications: ['AWS Solutions Architect Professional'],
     features: ['EC2', 'Lambda', 'S3', 'RDS', 'CloudFormation'],
@@ -285,21 +275,6 @@ const technologies: Technology[] = [
     lastUsed: '2024',
     trends: 'stable',
     features: ['Containerization', 'Multi-stage Builds', 'Compose', 'Swarm'],
-  },
-  {
-    id: 'kubernetes',
-    name: 'Kubernetes',
-    category: 'cloud',
-    proficiency: 6,
-    experience: 2,
-    projectCount: 8,
-    description: 'Container orchestration for managing distributed applications.',
-    color: '#326ce5',
-    status: 'learning',
-    firstUsed: '2022',
-    lastUsed: '2024',
-    trends: 'rising',
-    features: ['Orchestration', 'Auto-scaling', 'Service Discovery', 'Rolling Updates'],
   },
 
   // Mobile
