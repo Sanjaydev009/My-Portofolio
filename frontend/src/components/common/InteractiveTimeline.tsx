@@ -41,174 +41,115 @@ interface TimelineEvent {
 const timelineData: TimelineEvent[] = [
   {
     id: '1',
-    date: '2025-04',
-    title: 'Advanced Portfolio Website Development',
-    description: 'Built comprehensive portfolio website showcasing skills, projects, and achievements using modern web technologies.',
-    category: 'project',
-    location: 'Personal Project',
-    tags: ['React', 'TypeScript', 'Material-UI', 'Performance Optimization'],
+    date: '2025-02-15',
+    title: '🌟 First Job at Heydu Services Pvt Ltd',
+    description: 'Started my professional career as a Software Developer at Heydu Services. Eternally grateful to Srinivas Sir and Siddhartha for this incredible opportunity to grow and improve my skills.',
+    category: 'work',
+    location: 'Heydu Services Pvt Ltd',
+    tags: ['First Job', 'Professional Career', 'Srinivas Sir', 'Siddhartha', 'Career Growth'],
     color: '#ec4899',
     details: {
-      skills: ['React', 'TypeScript', 'Responsive Design', 'Performance Optimization'],
-      impact: 'Created professional online presence showcasing technical skills with 95/100 performance score',
+      skills: ['Professional Development', 'Team Collaboration', 'Software Development', 'Problem Solving'],
+      impact: 'Starting my professional journey in software development, contributing to real-world projects and learning from experienced mentors',
       links: [
-        { label: 'Live Portfolio', url: 'https://sanjay-portfolio.vercel.app' },
-        { label: 'Source Code', url: 'https://github.com/Sanjaydev009/My-Portofolio' }
+        { label: 'Company Profile', url: 'https://www.linkedin.com/company/heydu-services-pvt-ltd/posts/?feedView=all' }
       ]
     }
   },
   {
     id: '2',
-    date: '2025-02',
-    title: '6 Months Full Stack Internship at Heydu Services',
-    description: 'Completed advanced internship working on production-level projects and mentoring junior developers.',
+    date: 'Present',
+    title: 'Internship at Heydu Services Pvt Ltd',
+    description: 'Currently interning at Heydu Services Pvt Ltd, where I’m actively contributing to live projects while gaining hands-on experience in software development, team collaboration, and agile workflows.',
     category: 'work',
     location: 'Heydu Services Pvt Ltd',
-    tags: ['Full Stack Development', 'MERN Stack', 'Team Leadership', 'Mentoring'],
+    tags: ['Internship', 'Professional Training', 'Real Projects', 'Career Foundation'],
     color: '#8b5cf6',
     details: {
-      skills: ['Team Leadership', 'Production Systems', 'Mentoring', 'MERN Stack'],
-      impact: 'Led development initiatives, mentored junior developers, and contributed to multiple production applications',
+      skills: ['Professional Standards', 'Team Collaboration', 'Project Development', 'Industry Best Practices'],
+      impact: 'Gained invaluable industry experience, learned professional development practices, and built foundation for career growth',
       links: [
-        { label: 'Company Profile', url: '#company' }
+        { label: 'Internship Experience', url: 'https://www.linkedin.com/company/heydu-services-pvt-ltd/posts/?feedView=all' }
       ]
     }
   },
   {
     id: '3',
-    date: '2024-03',
-    title: 'First Rank in MCA Academics',
-    description: 'Achieved first rank among all MCA students, recognized for outstanding academic performance and dedication.',
-    category: 'achievement',
-    location: 'University',
-    tags: ['Academic Excellence', 'First Rank', 'University Recognition'],
+    date: '2025-09',
+    title: 'MCA Graduation - Aurora Deemed University',
+    description: 'Successfully completed Master of Computer Applications from Aurora Deemed to be University, where I discovered my passion for software development.',
+    category: 'education',
+    location: 'Aurora Deemed to be University',
+    tags: ['MCA', 'Post Graduate', 'Software Development', 'Aurora University'],
     color: '#f59e0b',
     details: {
-      skills: ['Academic Leadership', 'Problem Solving', 'Research'],
-      impact: 'Recognized by university for exceptional academic performance with 9.2/10 CGPA',
+      skills: ['Programming', 'Software Engineering', 'Database Management', 'Web Development'],
+      impact: 'Gained comprehensive knowledge in computer applications and developed strong foundation in software development',
       links: [
-        { label: 'Achievement Certificate', url: '#achievement' }
+        { label: 'University Profile', url: 'https://aurora.edu.in/' }
       ]
     }
   },
   {
     id: '4',
-    date: '2024-01',
-    title: 'Master of Computer Applications (MCA)',
-    description: 'Completed MCA with first rank, demonstrating academic excellence and deep understanding of computer science concepts.',
-    category: 'education',
-    location: 'University',
-    tags: ['Post Graduate Degree', 'Computer Science', 'Software Engineering'],
-    color: '#ff9900',
+    date: '2023-08',
+    title: '💻 First Code Written - HTML',
+    description: 'Wrote my very first line of code in HTML during MCA program. That simple "Hello, World!" opened the door to the amazing world of programming.',
+    category: 'achievement',
+    location: 'College Lab',
+    tags: ['First Code', 'HTML', 'Programming Journey', 'Learning Milestone'],
+    color: '#10b981',
     details: {
-      skills: ['Software Engineering', 'Database Management', 'Advanced Programming'],
-      impact: 'Gained comprehensive theoretical knowledge and practical skills in advanced computer science topics with 9.2/10 CGPA',
+      skills: ['HTML', 'Web Development Basics', 'Problem Solving', 'Learning Mindset'],
+      impact: 'Discovered passion for coding and web development, marking the beginning of my programming journey',
       links: [
-        { label: 'Academic Certificate', url: '#certificate' }
+        { label: 'Learning Journey', url: '#coding' }
       ]
     }
   },
   {
     id: '5',
-    date: '2024-06',
-    title: '3 Months Internship at Edu-versity',
-    description: 'Completed first professional internship gaining real-world development experience and industry best practices.',
-    category: 'work',
-    location: 'Edu-versity',
-    tags: ['Internship', 'Professional Growth', 'Web Development'],
+    date: '2025-06',
+    title: 'Student Feedback Management System',
+    description: 'Developed comprehensive MERN stack application with advanced features including email configuration, real-time analytics, and user management.',
+    category: 'project',
+    location: 'Academic Project',
+    tags: ['MERN Stack', 'Email Integration', 'Full Stack', 'Database Design'],
     color: '#06b6d4',
     details: {
-      skills: ['Professional Development', 'Team Collaboration', 'Industry Experience'],
-      impact: 'Gained valuable industry experience, learned professional development practices, and built confidence in teamwork',
+      skills: ['MongoDB', 'Express.js', 'React', 'Node.js', 'Email Integration', 'Authentication'],
+      impact: 'Built complex full-stack application demonstrating ability to handle real-world development challenges',
       links: [
-        { label: 'Internship Certificate', url: '#internship' }
+        { label: 'GitHub Repository', url: 'https://github.com/Sanjaydev009/student-feedback-system' }
       ]
     }
   },
   {
     id: '6',
-    date: '2023-12',
-    title: 'Student Feedback Management System',
-    description: 'Developed comprehensive feedback management system with advanced features like real-time analytics and dashboard.',
-    category: 'project',
-    location: 'Academic Project',
-    tags: ['MERN Stack', 'Real-time Analytics', 'System Design'],
-    color: '#10b981',
+    date: '2023-11',
+    title: 'MCA Program Started',
+    description: 'Began Master of Computer Applications at Aurora Deemed to be University, diving deep into programming, software engineering, and computer science concepts.',
+    category: 'education',
+    location: 'Aurora Deemed to be University',
+    tags: ['Higher Education', 'Computer Science', 'Skill Development'],
+    color: '#ff9900',
     details: {
-      skills: ['MERN Stack', 'Real-time Analytics', 'Dashboard Development', 'User Management'],
-      impact: 'Successfully deployed complex system demonstrating ability to handle large-scale application development with 500+ users supported',
-      links: [
-        { label: 'GitHub Repository', url: 'https://github.com/Sanjaydev009/student-feedback-system' },
-        { label: 'Live Demo', url: '#demo' }
-      ]
+      skills: ['Programming Fundamentals', 'Data Structures', 'Software Engineering', 'Database Systems'],
+      impact: 'Started intensive computer science education that would shape my career in software development',
     }
   },
   {
     id: '7',
-    date: '2022-09',
-    title: 'Full Stack Development Transition',
-    description: 'Expanded skillset to backend technologies including Node.js, Express.js, MongoDB, and API development.',
-    category: 'achievement',
-    location: 'Self Learning',
-    tags: ['Node.js', 'Express.js', 'MongoDB', 'Full Stack'],
+    date: '2023-06',
+    title: 'Bachelor Degree Completion',
+    description: 'Completed Bachelor of Arts from Dr BR Ambedkar Open University, which provided flexibility to explore different areas of knowledge.',
+    category: 'education',
+    location: 'Dr BR Ambedkar Open University',
+    tags: ['Bachelor Degree', 'BA', 'Distance Learning', 'Self-Discipline'],
     color: '#8b5cf6',
     details: {
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Backend Development'],
-      impact: 'Became a full-stack developer capable of building end-to-end web applications independently',
-      links: [
-        { label: 'Portfolio Projects', url: '#projects' }
-      ]
-    }
-  },
-  {
-    id: '8',
-    date: '2022-03',
-    title: 'React Framework Specialization',
-    description: 'Specialized in React.js ecosystem including hooks, state management, routing, and modern development patterns.',
-    category: 'achievement',
-    location: 'Self Learning',
-    tags: ['React.js', 'Hooks', 'State Management', 'Component Architecture'],
-    color: '#06b6d4',
-    details: {
-      skills: ['React.js', 'Hooks', 'State Management', 'Component Architecture', 'SPA Development'],
-      impact: 'Became proficient in building modern, interactive web applications with component-based architecture',
-      links: [
-        { label: 'React Projects', url: '#react-projects' }
-      ]
-    }
-  },
-  {
-    id: '9',
-    date: '2021-08',
-    title: 'JavaScript & Programming Logic',
-    description: 'Mastered JavaScript fundamentals, ES6+ features, and developed strong programming logic and problem-solving skills.',
-    category: 'achievement',
-    location: 'Self Learning',
-    tags: ['JavaScript', 'ES6+', 'Problem Solving', 'Programming Logic'],
-    color: '#f59e0b',
-    details: {
-      skills: ['JavaScript', 'ES6+', 'DOM Manipulation', 'Async Programming', 'Problem Solving'],
-      impact: 'Built solid foundation in programming concepts, algorithms, and modern JavaScript development practices',
-      links: [
-        { label: 'JavaScript Projects', url: '#js-projects' }
-      ]
-    }
-  },
-  {
-    id: '10',
-    date: '2021-01',
-    title: 'Started Programming Journey',
-    description: 'Began coding journey with curiosity about how websites and applications work, starting with basic HTML and CSS.',
-    category: 'personal',
-    location: 'Self Learning',
-    tags: ['HTML', 'CSS', 'Web Development', 'Learning'],
-    color: '#10b981',
-    details: {
-      skills: ['HTML', 'CSS', 'Web Development', 'Foundation Building'],
-      impact: 'Discovered passion for web development and decided to pursue computer science as a career path',
-      links: [
-        { label: 'First Projects', url: '#first-projects' }
-      ]
+      skills: ['Self-Directed Learning', 'Time Management', 'Independent Study', 'Academic Discipline'],
+      impact: 'Developed strong self-discipline and independent learning skills through distance education',
     }
   }
 ];

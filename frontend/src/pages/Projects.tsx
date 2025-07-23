@@ -23,7 +23,39 @@ import type { Project } from '../types';
 // Fallback mock data for when API is not available
 const mockProjects: Project[] = [
   {
-    _id: '1',
+    _id: '0',
+    title: '🌟 Heydu Services - Professional Experience',
+    description: 'Real-time hands-on experience at Heydu Services Pvt Ltd, where I contributed to live production projects and gained invaluable industry experience. Working with experienced mentors Srinivas Sir and Siddhartha, I developed professional coding standards, learned agile methodologies, and contributed to client-facing applications that serve real users.',
+    shortDescription: 'Professional development experience with real-world project contributions',
+    technologies: ['React', 'Node.js', 'JavaScript', 'Professional Development', 'Agile', 'Team Collaboration'],
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+        caption: 'Professional Team Environment',
+        isMain: true,
+      },
+    ],
+    links: {
+      demo: 'https://heydu.biz/',
+      github: 'https://github.com/Sanjaydev009', // Your GitHub profile as you contributed to their projects
+    },
+    category: 'web',
+    status: 'in-progress', // Since you're currently working there
+    featured: true,
+    priority: 0, // Highest priority to show first
+    tags: ['Professional Experience', 'Real-time Projects', 'Industry Standards', 'Team Collaboration', 'Mentorship'],
+    challenges: 'Adapting to professional development standards, working on live client projects, and meeting production deadlines',
+    solutions: 'Learned industry best practices, collaborated effectively with senior developers, and contributed to scalable applications',
+    duration: 'Ongoing since 2024',
+    teamSize: 5,
+    isPublic: true,
+    views: 2500,
+    likes: 125,
+    createdAt: new Date('2024-12-01'),
+    updatedAt: new Date('2025-07-23'),
+  },
+  {
+    _id: '2',
     title: 'Student Feedback Management System',
     description: 'A comprehensive feedback management system built with MERN Stack featuring user authentication, feedback submission, real-time analytics dashboard, and mail configuration for notifications. Designed for academic institutions to streamline feedback collection and management processes.',
     shortDescription: 'MERN Stack feedback system with mail configuration and analytics',
@@ -54,7 +86,7 @@ const mockProjects: Project[] = [
     updatedAt: new Date('2024-03-20'),
   },
   {
-    _id: '2',
+    _id: '3',
     title: 'Personal Portfolio Website',
     description: 'A modern, responsive portfolio website built with React and TypeScript, featuring interactive components, smooth animations, achievement showcase, blog system, and contact form with EmailJS integration. Optimized for performance with code splitting and lazy loading.',
     shortDescription: 'Modern portfolio with interactive components and performance optimization',
@@ -86,7 +118,7 @@ const mockProjects: Project[] = [
     updatedAt: new Date('2025-07-23'),
   },
   {
-    _id: '3',
+    _id: '4',
     title: 'Image Caption Generator using CNN',
     description: 'A deep learning project that automatically generates descriptive captions for images using Convolutional Neural Networks (CNN) and Natural Language Processing. Built with TensorFlow and trained on large image datasets to understand visual content and generate human-like descriptions.',
     shortDescription: 'AI-powered image captioning using CNN and deep learning',
@@ -117,7 +149,7 @@ const mockProjects: Project[] = [
     updatedAt: new Date('2024-10-20'),
   },
   {
-    _id: '4',
+    _id: '5',
     title: 'College Website',
     description: 'A professional college website built with React featuring course information, faculty profiles, admission details, student portal, and event management. Designed with modern UI/UX principles for better user engagement and responsive design across all devices.',
     shortDescription: 'Professional college website with comprehensive features',

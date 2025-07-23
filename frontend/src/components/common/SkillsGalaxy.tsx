@@ -42,31 +42,47 @@ interface SkillCategory {
 
 const skills: Skill[] = [
   // Frontend
-  { id: 'react', name: 'React', level: 95, category: 'Frontend', x: 0, y: 0, z: 0, color: '#61dafb', connections: ['typescript', 'nextjs', 'redux'], description: 'Building modern, interactive user interfaces', projects: ['Portfolio', 'E-commerce Platform', 'Task Manager'] },
-  { id: 'typescript', name: 'TypeScript', level: 90, category: 'Frontend', x: 120, y: -40, z: 20, color: '#3178c6', connections: ['react', 'nodejs', 'nextjs'], description: 'Type-safe JavaScript for better development experience', projects: ['All modern projects', 'API clients', 'Complex applications'] },
-  { id: 'nextjs', name: 'Next.js', level: 85, category: 'Frontend', x: -80, y: 60, z: -30, color: '#000000', connections: ['react', 'typescript', 'vercel'], description: 'Full-stack React framework for production', projects: ['Company website', 'Blog platform', 'E-commerce'] },
-  { id: 'tailwind', name: 'Tailwind CSS', level: 88, category: 'Frontend', x: 90, y: 80, z: 40, color: '#38b2ac', connections: ['react', 'nextjs'], description: 'Utility-first CSS framework for rapid UI development', projects: ['Design system', 'Landing pages', 'Mobile apps'] },
+  { id: 'html5', name: 'HTML5', level: 95, category: 'Frontend', x: 0, y: 0, z: 0, color: '#e34f26', connections: ['css3', 'javascript'], description: 'Semantic markup and modern web standards', projects: ['Personal Portfolio', 'College Website', 'All web projects'] },
+  { id: 'css3', name: 'CSS3', level: 95, category: 'Frontend', x: 80, y: -40, z: 20, color: '#1572b6', connections: ['html5', 'tailwind', 'bootstrap'], description: 'Modern styling with animations and responsive design', projects: ['Personal Portfolio', 'Custom components', 'Responsive layouts'] },
+  { id: 'javascript', name: 'JavaScript', level: 92, category: 'Frontend', x: -80, y: 60, z: -30, color: '#f7df1e', connections: ['react', 'nodejs', 'typescript'], description: 'Core programming language for web development', projects: ['Interactive features', 'Dynamic content', 'API integrations'] },
+  { id: 'react', name: 'React/TypeScript', level: 95, category: 'Frontend', x: 120, y: 20, z: 40, color: '#61dafb', connections: ['typescript', 'nextjs', 'javascript'], description: 'Building modern, interactive user interfaces with TypeScript', projects: ['Personal Portfolio', 'Student Feedback System', 'College Website'] },
+  { id: 'nextjs', name: 'Next.js', level: 90, category: 'Frontend', x: -120, y: -60, z: 10, color: '#000000', connections: ['react', 'typescript'], description: 'Full-stack React framework for production', projects: ['SSR applications', 'Performance optimization'] },
+  { id: 'angular', name: 'Angular', level: 75, category: 'Frontend', x: 150, y: 80, z: -20, color: '#dd0031', connections: ['typescript', 'javascript'], description: 'TypeScript-based framework for enterprise applications', projects: ['Enterprise projects', 'Component libraries'] },
+  { id: 'tailwind', name: 'Tailwind CSS', level: 88, category: 'Frontend', x: -150, y: 20, z: 30, color: '#38b2ac', connections: ['css3', 'react'], description: 'Utility-first CSS framework for rapid UI development', projects: ['Modern designs', 'Responsive components'] },
+  { id: 'bootstrap', name: 'Bootstrap', level: 85, category: 'Frontend', x: 90, y: -80, z: -40, color: '#7952b3', connections: ['css3', 'html5'], description: 'Popular CSS framework for responsive design', projects: ['College Website', 'Quick prototypes'] },
+  { id: 'materialui', name: 'Material-UI', level: 85, category: 'Frontend', x: -90, y: 120, z: 60, color: '#0081cb', connections: ['react', 'typescript'], description: 'React components implementing Google Material Design', projects: ['Personal Portfolio', 'Student Feedback System'] },
   
   // Backend
-  { id: 'nodejs', name: 'Node.js', level: 88, category: 'Backend', x: -120, y: -60, z: 10, color: '#339933', connections: ['typescript', 'mongodb', 'express'], description: 'Server-side JavaScript runtime', projects: ['REST APIs', 'Microservices', 'Real-time apps'] },
-  { id: 'express', name: 'Express.js', level: 85, category: 'Backend', x: -150, y: 20, z: -20, color: '#404040', connections: ['nodejs', 'mongodb', 'jwt'], description: 'Minimal and flexible Node.js web framework', projects: ['API servers', 'Authentication systems', 'Middleware'] },
-  { id: 'mongodb', name: 'MongoDB', level: 80, category: 'Backend', x: -200, y: -20, z: 30, color: '#47a248', connections: ['nodejs', 'express', 'mongoose'], description: 'NoSQL database for modern applications', projects: ['User management', 'Content systems', 'Analytics'] },
+  { id: 'nodejs', name: 'Node.js/Express', level: 90, category: 'Backend', x: -200, y: -20, z: 50, color: '#339933', connections: ['javascript', 'mongodb', 'api'], description: 'Server-side JavaScript runtime with Express framework', projects: ['Student Feedback System', 'REST APIs', 'Microservices'] },
+  { id: 'python', name: 'Python', level: 85, category: 'Backend', x: 200, y: -40, z: -50, color: '#3776ab', connections: ['tensorflow', 'ml'], description: 'Programming for backend development, AI and data science', projects: ['Image Caption Generator', 'Machine learning models', 'Data analysis'] },
+  { id: 'java', name: 'Java', level: 60, category: 'Backend', x: -180, y: 80, z: -60, color: '#ed8b00', connections: ['api'], description: 'Object-oriented programming for enterprise applications', projects: ['Academic projects', 'Algorithm implementations'] },
+  { id: 'api', name: 'RESTful APIs', level: 92, category: 'Backend', x: 180, y: 60, z: 80, color: '#4caf50', connections: ['nodejs', 'java', 'mongodb'], description: 'Designing and implementing REST APIs', projects: ['Student Feedback System', 'Personal Portfolio backend'] },
   
-  // DevOps & Tools
-  { id: 'docker', name: 'Docker', level: 82, category: 'DevOps', x: 150, y: -80, z: -40, color: '#2496ed', connections: ['kubernetes', 'cicd', 'aws'], description: 'Containerization for consistent deployments', projects: ['Development environments', 'Production deployments'] },
-  { id: 'git', name: 'Git', level: 95, category: 'DevOps', x: 80, y: -120, z: 60, color: '#f05032', connections: ['github', 'cicd'], description: 'Version control and collaboration', projects: ['All projects', 'Open source contributions'] },
+  // Database
+  { id: 'mongodb', name: 'MongoDB', level: 88, category: 'Database', x: -250, y: 40, z: 20, color: '#47a248', connections: ['nodejs', 'api'], description: 'NoSQL database for modern applications', projects: ['User management', 'Content systems', 'Analytics'] },
+  { id: 'mysql', name: 'MySQL', level: 85, category: 'Database', x: 250, y: -80, z: 30, color: '#4479a1', connections: ['api', 'java'], description: 'Relational database management system', projects: ['Traditional web apps', 'Data storage'] },
+  { id: 'redis', name: 'Redis', level: 75, category: 'Database', x: -220, y: -100, z: -30, color: '#dc382d', connections: ['nodejs'], description: 'In-memory data structure store for caching', projects: ['Performance optimization', 'Session management'] },
+  { id: 'firebase', name: 'Firebase', level: 80, category: 'Database', x: 220, y: 100, z: -40, color: '#ffca28', connections: ['react', 'api'], description: 'Google platform for web and mobile app development', projects: ['Real-time apps', 'Authentication'] },
   
-  // AI & Data
-  { id: 'python', name: 'Python', level: 80, category: 'AI/ML', x: -180, y: 80, z: 50, color: '#3776ab', connections: ['tensorflow', 'data-analysis'], description: 'Programming for AI and data science', projects: ['Machine learning models', 'Data analysis', 'Automation'] },
-  { id: 'tensorflow', name: 'TensorFlow', level: 65, category: 'AI/ML', x: -220, y: 120, z: -10, color: '#ff6f00', connections: ['python', 'ml'], description: 'Machine learning framework', projects: ['Image recognition', 'Predictive models'] },
+  // AI/ML
+  { id: 'ml', name: 'Machine Learning', level: 78, category: 'AI/ML', x: 160, y: -120, z: 70, color: '#ff9800', connections: ['python', 'tensorflow', 'pytorch'], description: 'Building intelligent systems and predictive models', projects: ['Image Caption Generator', 'Predictive analytics'] },
+  { id: 'tensorflow', name: 'TensorFlow', level: 70, category: 'AI/ML', x: -160, y: -140, z: -70, color: '#ff6f00', connections: ['python', 'ml'], description: 'Machine learning framework for deep learning', projects: ['Image recognition', 'Neural networks'] },
+  { id: 'pytorch', name: 'PyTorch', level: 65, category: 'AI/ML', x: 280, y: 40, z: -80, color: '#ee4c2c', connections: ['python', 'ml'], description: 'Dynamic neural network framework', projects: ['Research projects', 'Model prototyping'] },
+  { id: 'transformers', name: 'Transformers', level: 72, category: 'AI/ML', x: -280, y: -60, z: 90, color: '#ffd700', connections: ['python', 'ml'], description: 'State-of-the-art NLP models and architectures', projects: ['Text processing', 'Language models'] },
+  
+  // Tools & Others
+  { id: 'git', name: 'Git/GitHub', level: 95, category: 'Tools', x: 100, y: 140, z: -90, color: '#f05032', connections: ['vscode'], description: 'Version control and collaboration', projects: ['All projects', 'Open source contributions'] },
+  { id: 'vscode', name: 'VS Code', level: 95, category: 'Tools', x: -100, y: -160, z: 100, color: '#007acc', connections: ['git'], description: 'Primary development environment', projects: ['All development work', 'Extension development'] },
+  { id: 'androidstudio', name: 'Android Studio', level: 75, category: 'Tools', x: 320, y: -20, z: 50, color: '#3ddc84', connections: ['java'], description: 'IDE for Android app development', projects: ['Mobile app development', 'Android projects'] },
+  { id: 'figma', name: 'Figma', level: 80, category: 'Tools', x: -320, y: 20, z: -50, color: '#f24e1e', connections: ['react', 'css3'], description: 'UI/UX design and prototyping tool', projects: ['Design systems', 'Wireframes', 'Prototypes'] },
 ];
 
 const skillCategories: Record<string, SkillCategory> = {
   'Frontend': { name: 'Frontend', color: '#61dafb', visible: true },
   'Backend': { name: 'Backend', color: '#339933', visible: true },
-  'DevOps': { name: 'DevOps', color: '#2496ed', visible: true },
-  'Design': { name: 'Design', color: '#f24e1e', visible: true },
-  'AI/ML': { name: 'AI/ML', color: '#ff6f00', visible: true },
+  'Database': { name: 'Database', color: '#47a248', visible: true },
+  'AI/ML': { name: 'AI/ML', color: '#ff9800', visible: true },
+  'Tools': { name: 'Tools & Others', color: '#007acc', visible: true },
 };
 
 const SkillsGalaxy: React.FC = () => {
