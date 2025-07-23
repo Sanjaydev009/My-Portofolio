@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Container,
   Typography,
   Button,
   Avatar,
-  IconButton,
+  Stack,
   useTheme,
   useMediaQuery,
+  alpha,
+  Chip,
+  IconButton,
+  Tooltip,
 } from '@mui/material';
 import {
-  GitHub,
-  LinkedIn,
+  LocationOn,
   Email,
+  Phone,
+  LinkedIn,
+  GitHub,
   Download,
   KeyboardArrowDown,
+  Code,
+  School,
+  Work,
 } from '@mui/icons-material';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import ResumeDownloadService from '../../utils/resumeDownload';
 import { Link as RouterLink } from 'react-router-dom';
 import InteractiveBackground from './InteractiveBackground';
 import TypewriterEffect from './TypewriterEffect';
@@ -46,37 +56,20 @@ const Hero: React.FC = () => {
     });
   };
 
-  const handleDownloadResume = () => {
+  const handleDownloadResume = async () => {
     try {
-      // Create a link element
-      const link = document.createElement('a');
-      
-      // Set the path to your resume file (place your resume in public/documents/ folder)
-      link.href = '/documents/Sanju_Resume.pdf';
-      
-      // Set the download attribute with the desired filename
-      link.download = 'Sanju_Resume.pdf';
-      
-      // Set the link target to _blank to open in new tab if download fails
-      link.target = '_blank';
-      
-      // Append link to body
-      document.body.appendChild(link);
-      
-      // Trigger click
-      link.click();
-      
-      // Remove link from body
-      document.body.removeChild(link);
-      
-      // Optional: Track download event for analytics
-      console.log('Resume download initiated');
-      
+      const success = await ResumeDownloadService.downloadResume({
+        filename: 'Sanju_Resume.pdf',
+        showUserFeedback: true,
+      });
+
+      if (success) {
+        console.log('Resume download process completed');
+      } else {
+        console.warn('Resume download failed with all methods');
+      }
     } catch (error) {
-      console.error('Error downloading resume:', error);
-      
-      // Fallback: Open resume in new tab if download fails
-      window.open('/documents/Sanju_Resume.pdf', '_blank');
+      console.error('Error in resume download:', error);
     }
   };
 
