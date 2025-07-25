@@ -13,6 +13,7 @@ import {
 import { Search, ArrowForward } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import BlogCard from './BlogCard';
+import ProfessionalGrid from '../common/ProfessionalGrid';
 
 // Sample blog data - replace this with your actual data source
 const blogPosts = [
@@ -112,8 +113,16 @@ const BlogSection: React.FC = () => {
   };
 
   return (
-    <Box sx={{ py: 8, backgroundColor: 'background.default' }}>
-      <Container maxWidth="lg">
+    <Box sx={{ 
+      py: 8, 
+      backgroundColor: 'background.default',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
+      {/* Professional Grid Pattern */}
+      <ProfessionalGrid intensity="light" animated zIndex={0} />
+      
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

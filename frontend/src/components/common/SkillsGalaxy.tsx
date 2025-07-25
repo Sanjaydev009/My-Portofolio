@@ -19,6 +19,7 @@ import {
   ZoomOut,
   FilterList,
 } from '@mui/icons-material';
+import { prefersReducedMotion, devicePerformance } from '../../utils/performance';
 
 interface Skill {
   id: string;
@@ -91,7 +92,12 @@ const SkillsGalaxy: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number | null>(null);
   const rotationRef = useRef({ x: 0, y: 0 });
-  const [isAnimating, setIsAnimating] = useState(true);
+  
+  // Performance optimizations
+  const shouldReduceMotion = prefersReducedMotion();
+  const isLowEndDevice = devicePerformance.isLowEndDevice();
+  
+  const [isAnimating, setIsAnimating] = useState(!shouldReduceMotion && !isLowEndDevice);
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null);
   const [hoveredSkill, setHoveredSkill] = useState<Skill | null>(null);
   const [zoom, setZoom] = useState(1);
@@ -225,10 +231,10 @@ const SkillsGalaxy: React.FC = () => {
     };
 
     const animate = () => {
-      if (isAnimating) {
+      if (isAnimating && !shouldReduceMotion) {
         rotationRef.current = {
-          x: rotationRef.current.x + 0.005,
-          y: rotationRef.current.y + 0.003,
+          x: rotationRef.current.x + (isLowEndDevice ? 0.002 : 0.005),
+          y: rotationRef.current.y + (isLowEndDevice ? 0.001 : 0.003),
         };
       }
       draw();

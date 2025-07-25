@@ -11,14 +11,19 @@ import {
   Fab,
   useScrollTrigger,
   Zoom,
+  useTheme,
+  alpha,
 } from '@mui/material';
-import { Search, KeyboardArrowUp, FilterList } from '@mui/icons-material';
+import { Search, KeyboardArrowUp, FilterList, Article, Star } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import BlogCard from '../components/common/BlogCard';
 import Loading from '../components/common/Loading';
+import ProfessionalGrid from '../components/common/ProfessionalGrid';
 import { blogService } from '../services/blog';
 import { useQuery } from '@tanstack/react-query';
 import type { BlogPost } from '../types';
+import { useResponsive, getResponsiveSpacing, getResponsiveTypography, getResponsiveLayout } from '../utils/responsive';
+import { useResponsiveColumns, useResponsiveContainer, useResponsivePadding } from '../hooks/useMediaQuery';
 
 // Import profile image
 import profileImage from '../assets/images/sanju.jpg';
@@ -227,6 +232,15 @@ const Blog: React.FC = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([]);
   
+  const theme = useTheme();
+  const responsive = useResponsive();
+  const spacing = getResponsiveSpacing(theme);
+  const typography = getResponsiveTypography();
+  const layout = getResponsiveLayout();
+  const columns = useResponsiveColumns();
+  const containerWidth = useResponsiveContainer();
+  const padding = useResponsivePadding();
+  
   // DISABLED: API calls since we're using frontend-only mode
   // const { data: blogsResponse, isLoading, error } = useQuery({
   //   queryKey: ['blogs', { category, search: searchQuery }],
@@ -303,139 +317,460 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: `linear-gradient(135deg, ${alpha(theme.palette.background.default, 0.95)} 0%, ${alpha(theme.palette.background.paper, 0.95)} 100%)`,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Professional Background Elements */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          overflow: 'hidden',
+          zIndex: 0,
+        }}
       >
-        <Typography
-          variant="h2"
-          component="h1"
-          sx={{
-            fontWeight: 'bold',
-            textAlign: 'center',
-            mb: 2,
-          }}
-        >
-          Blog
-        </Typography>
-        
-        <Typography
-          variant="h6"
-          sx={{
-            textAlign: 'center',
-            color: 'text.secondary',
-            mb: 6,
-            maxWidth: '800px',
-            mx: 'auto',
-          }}
-        >
-          Thoughts, insights, and tutorials on web development and technology
-        </Typography>
-      </motion.div>
+        {/* Professional Grid Pattern */}
+        <ProfessionalGrid intensity="light" animated zIndex={1} />
 
-      {/* Search and Filter */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <Box sx={{ mb: 4 }}>
-          <TextField
-            fullWidth
-            placeholder="Search blog posts..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              ),
-            }}
-            sx={{ mb: 3 }}
-          />
+        {/* Floating Article Elements */}
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
+            x: [0, 10, 0],
+            rotate: [0, 45, 90],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          style={{
+            position: 'absolute',
+            top: '12%',
+            left: '6%',
+            width: '35px',
+            height: '35px',
+            background: `linear-gradient(45deg, ${alpha(theme.palette.primary.main, 0.15)}, ${alpha(theme.palette.secondary.main, 0.15)})`,
+            borderRadius: '15% 85% 15% 85%',
+            filter: 'blur(1px)',
+          }}
+        />
 
-          {/* Tags Filter */}
-          <Box sx={{ mb: 3 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <FilterList sx={{ mr: 1, color: 'text.secondary' }} />
-              <Typography variant="subtitle2" color="text.secondary">
-                Filter by tags:
-              </Typography>
-              {selectedTags.length > 0 && (
-                <Button
-                  size="small"
-                  onClick={() => setSelectedTags([])}
-                  sx={{ ml: 2 }}
+        <motion.div
+          animate={{
+            y: [0, 25, 0],
+            x: [0, -12, 0],
+            rotate: [0, -90, -180],
+          }}
+          transition={{
+            duration: 16,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '30%',
+            right: '10%',
+            width: '45px',
+            height: '45px',
+            background: `linear-gradient(135deg, ${alpha(theme.palette.secondary.main, 0.12)}, ${alpha(theme.palette.primary.main, 0.12)})`,
+            borderRadius: '50%',
+            filter: 'blur(2px)',
+          }}
+        />
+
+        {/* Gradient Orbs */}
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          style={{
+            position: 'absolute',
+            top: '35%',
+            right: '15%',
+            width: '160px',
+            height: '160px',
+            background: `radial-gradient(circle, ${alpha(theme.palette.primary.main, 0.09)} 0%, transparent 70%)`,
+            borderRadius: '50%',
+            filter: 'blur(35px)',
+          }}
+        />
+
+        <motion.div
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.15, 0.3, 0.15],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: 7,
+          }}
+          style={{
+            position: 'absolute',
+            bottom: '12%',
+            left: '10%',
+            width: '200px',
+            height: '200px',
+            background: `radial-gradient(circle, ${alpha(theme.palette.secondary.main, 0.07)} 0%, transparent 70%)`,
+            borderRadius: '50%',
+            filter: 'blur(45px)',
+          }}
+        />
+
+        {/* Content Pattern Background */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: `
+              radial-gradient(circle at 30% 70%, ${alpha(theme.palette.primary.main, 0.05)} 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, ${alpha(theme.palette.secondary.main, 0.05)} 0%, transparent 50%),
+              radial-gradient(circle at 45% 45%, ${alpha(theme.palette.info.main, 0.03)} 0%, transparent 50%)
+            `,
+          }}
+        />
+      </Box>
+
+      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 } }}>
+        {/* Professional Header Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Box sx={{ textAlign: 'center', mb: { xs: 8, md: 12 } }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 3 }}>
+              <Box
+                sx={{
+                  width: 48,
+                  height: 48,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  borderRadius: '50%',
+                  background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  color: 'white',
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, repeatDelay: 2 }}
                 >
-                  Clear filters
-                </Button>
-              )}
+                  <Article sx={{ fontSize: '1.5rem' }} />
+                </motion.div>
+              </Box>
+              <Typography
+                variant="h2"
+                component="h1"
+                sx={{
+                  fontWeight: 800,
+                  background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  fontSize: { xs: '2.5rem', md: '3.5rem', lg: '4rem' },
+                }}
+              >
+                Blog
+              </Typography>
             </Box>
             
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {allTags.map((tag) => (
-                <Chip
-                  key={tag}
-                  label={tag}
-                  variant={selectedTags.includes(tag) ? 'filled' : 'outlined'}
-                  color={selectedTags.includes(tag) ? 'primary' : 'default'}
-                  onClick={() => handleTagToggle(tag)}
-                  sx={{ cursor: 'pointer' }}
-                />
+            <Typography
+              variant="h5"
+              sx={{
+                color: 'text.secondary',
+                mb: 6,
+                maxWidth: '800px',
+                mx: 'auto',
+                lineHeight: 1.6,
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+              }}
+            >
+              Thoughts, insights, and tutorials on web development, technology trends, and my journey as a developer.
+              Sharing knowledge and experiences with the community.
+            </Typography>
+
+            {/* Blog Stats */}
+            <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 4 }}>
+              {[
+                { label: 'Total Posts', value: filteredPosts.length.toString(), icon: '📚' },
+                { label: 'Categories', value: allTags.length.toString(), icon: '🏷️' },
+                { label: 'Total Views', value: '10K+', icon: '👁️' },
+                { label: 'Monthly Readers', value: '500+', icon: '📖' },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Box
+                    sx={{
+                      textAlign: 'center',
+                      p: 3,
+                      borderRadius: 3,
+                      background: `linear-gradient(135deg, ${alpha(theme.palette.background.paper, 0.9)} 0%, ${alpha(theme.palette.background.paper, 0.7)} 100%)`,
+                      backdropFilter: 'blur(10px)',
+                      border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+                      minWidth: '120px',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        borderColor: alpha(theme.palette.primary.main, 0.3),
+                        boxShadow: `0 8px 32px ${alpha(theme.palette.primary.main, 0.15)}`,
+                        transform: 'translateY(-4px)',
+                      },
+                    }}
+                  >
+                    <Typography variant="h4" sx={{ 
+                      fontWeight: 700, 
+                      color: 'primary.main',
+                      mb: 1,
+                      fontSize: { xs: '1.5rem', md: '2rem' }
+                    }}>
+                      {stat.icon} {stat.value}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ 
+                      fontSize: '0.9rem',
+                      fontWeight: 500
+                    }}>
+                      {stat.label}
+                    </Typography>
+                  </Box>
+                </motion.div>
               ))}
             </Box>
           </Box>
-        </Box>
-      </motion.div>
+        </motion.div>
 
-      {/* Blog Posts Grid */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
-        {filteredPosts.length === 0 ? (
-          <Box sx={{ textAlign: 'center', py: 8 }}>
-            <Typography variant="h6" color="text.secondary">
-              No blog posts found
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-              {searchQuery || selectedTags.length > 0
-                ? 'Try adjusting your search criteria or filters'
-                : 'No blog posts available yet'
-              }
-            </Typography>
-          </Box>
-        ) : (
-          <Grid container spacing={4}>
-            {filteredPosts.map((post, index) => (
-              <Grid key={post._id} size={{ xs: 12, md: 6, lg: 4 }}>
-                <BlogCard post={post} index={index} />
-              </Grid>
-            ))}
-          </Grid>
-        )}
-      </motion.div>
-
-      {/* Scroll to Top FAB */}
-      <Zoom in={trigger}>
-        <Fab
-          color="primary"
-          size="small"
-          onClick={scrollToTop}
-          sx={{
-            position: 'fixed',
-            bottom: 16,
-            right: 16,
-          }}
+        {/* Professional Search and Filter Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <KeyboardArrowUp />
-        </Fab>
-      </Zoom>
-    </Container>
+          <Box 
+            sx={{ 
+              mb: { xs: 8, md: 10 },
+              p: 4,
+              borderRadius: 3,
+              background: `linear-gradient(135deg, ${alpha(theme.palette.background.paper, 0.9)} 0%, ${alpha(theme.palette.background.paper, 0.7)} 100%)`,
+              backdropFilter: 'blur(10px)',
+              border: `1px solid ${alpha(theme.palette.divider, 0.1)}`,
+            }}
+          >
+            <TextField
+              fullWidth
+              placeholder="Search blog posts by title, content, or tags..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search sx={{ color: 'primary.main' }} />
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ 
+                mb: 4,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: 2,
+                  background: alpha(theme.palette.background.paper, 0.8),
+                  '&:hover': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: alpha(theme.palette.primary.main, 0.5),
+                    },
+                  },
+                  '&.Mui-focused': {
+                    '& .MuiOutlinedInput-notchedOutline': {
+                      borderColor: theme.palette.primary.main,
+                    },
+                  },
+                },
+              }}
+            />
+
+            {/* Enhanced Tags Filter */}
+            <Box>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3, gap: 2 }}>
+                <FilterList sx={{ color: 'primary.main' }} />
+                <Typography 
+                  variant="h6" 
+                  sx={{ 
+                    fontWeight: 600,
+                    color: 'text.primary'
+                  }}
+                >
+                  Filter by Topics
+                </Typography>
+                {selectedTags.length > 0 && (
+                  <Button
+                    size="small"
+                    variant="outlined"
+                    onClick={() => setSelectedTags([])}
+                    sx={{ 
+                      borderRadius: 2,
+                      textTransform: 'none',
+                      fontWeight: 600,
+                    }}
+                  >
+                    Clear ({selectedTags.length})
+                  </Button>
+                )}
+              </Box>
+              
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
+                {allTags.map((tag) => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    variant={selectedTags.includes(tag) ? 'filled' : 'outlined'}
+                    onClick={() => handleTagToggle(tag)}
+                    sx={{ 
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      borderRadius: 2,
+                      transition: 'all 0.3s ease',
+                      ...(selectedTags.includes(tag) 
+                        ? {
+                            background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                            color: 'white',
+                            '&:hover': {
+                              background: `linear-gradient(45deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`,
+                            },
+                          }
+                        : {
+                            borderColor: alpha(theme.palette.primary.main, 0.3),
+                            '&:hover': {
+                              borderColor: theme.palette.primary.main,
+                              background: alpha(theme.palette.primary.main, 0.1),
+                            },
+                          }
+                      ),
+                    }}
+                  />
+                ))}
+              </Box>
+            </Box>
+          </Box>
+        </motion.div>
+
+        {/* Blog Posts Grid with Professional Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          {filteredPosts.length === 0 ? (
+            <Box sx={{ 
+              textAlign: 'center', 
+              py: { xs: 8, md: 12 },
+              px: { xs: 2, lg: 4 }
+            }}>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  background: `linear-gradient(45deg, ${alpha(theme.palette.primary.main, 0.1)}, ${alpha(theme.palette.secondary.main, 0.1)})`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mx: 'auto',
+                  mb: 3,
+                }}
+              >
+                <Typography variant="h3">📝</Typography>
+              </Box>
+              <Typography 
+                variant="h6" 
+                color="text.secondary"
+                sx={{ 
+                  fontSize: { xs: '1.25rem', lg: '1.5rem' },
+                  mb: 1
+                }}
+              >
+                No blog posts found
+              </Typography>
+              <Typography 
+                variant="body2" 
+                color="text.secondary" 
+                sx={{ 
+                  mt: 1,
+                  fontSize: { xs: '0.875rem', lg: '1rem' }
+                }}
+              >
+                {searchQuery || selectedTags.length > 0
+                  ? 'Try adjusting your search criteria or filters'
+                  : 'No blog posts available yet'
+                }
+              </Typography>
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${columns}, 1fr)`,
+                gap: { xs: 3, sm: 4, md: 5, lg: 6 },
+              }}
+            >
+              {filteredPosts.map((post, index) => (
+                <motion.div
+                  key={post._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                >
+                  <BlogCard post={post} index={index} />
+                </motion.div>
+              ))}
+            </Box>
+          )}
+        </motion.div>
+
+        {/* Scroll to Top FAB */}
+        <Zoom in={trigger}>
+          <Fab
+            color="primary"
+            size="small"
+            onClick={scrollToTop}
+            sx={{
+              position: 'fixed',
+              bottom: { xs: 16, lg: 24 },
+              right: { xs: 16, lg: 24 },
+              background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+              '&:hover': {
+                background: `linear-gradient(45deg, ${theme.palette.primary.dark}, ${theme.palette.secondary.dark})`,
+                transform: 'scale(1.1)',
+              },
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <KeyboardArrowUp />
+          </Fab>
+        </Zoom>
+      </Container>
+    </Box>
   );
 };
 
