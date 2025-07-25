@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
   ];
 
   const techStack = [
-    'React','Angular', 'TypeScript', 'Node.js', 'Python', 'MySQL', 'MongoDB'
+    'React','Angular', 'TypeScript', 'Node.js', 'Python', 'MySQL', 'MongoDB', 'JavaScript'
   ];
 
   const scrollToTop = () => {
