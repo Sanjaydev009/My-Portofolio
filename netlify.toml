@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "18"
+
+# SPA routing configuration
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
