@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import Hero from '../components/common/Hero';
-import FeaturedProjects from '../components/common/FeaturedProjects';
+import FeaturedProjects from '../components/common/FeaturedProjectsSimple';
 import SkillsSection from '../components/common/SkillsSection';
 import ContactSection from '../components/common/ContactSection';
 

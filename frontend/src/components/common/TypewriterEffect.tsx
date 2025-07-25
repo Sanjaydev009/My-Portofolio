@@ -63,12 +63,12 @@ const TypewriterEffect: React.FC<TypewriterEffectProps> = ({
     return () => clearTimeout(timeout);
   }, [currentText, currentTextIndex, isDeleting, texts, speed, deleteSpeed, pauseDuration, loop]);
 
-  // Cursor blinking effect
+  // Cursor blinking effect - optimized with longer intervals
   useEffect(() => {
     if (cursor) {
       const cursorInterval = setInterval(() => {
         setShowCursor((prev) => !prev);
-      }, 500);
+      }, 800); // Increased from 500 to 800 for better performance
 
       return () => clearInterval(cursorInterval);
     }
